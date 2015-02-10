@@ -1,0 +1,140 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.clearfix{
+  &:before,
+  &:after {
+    content: " "; // 1
+    display: table; // 2
+  }
+  &:after {
+    clear: both;
+  }
+}
+.pull-left{
+  float: left;
+}
+.pull-right{
+  float: right;
+}
+
+
+body{
+  font-family: 'pt serif';
+  font-size: 18px;
+  color: #82838e;
+  margin: 0;
+
+}
+header {
+  //  color: rgba(255, 255, 255, 0.5);
+  color: #fff;
+  height: 800px;
+  background-color: #303160;
+  margin-bottom: 60px;
+}
+   .wrapper{
+     .clearfix();
+    width: 960px;
+    margin: 0 auto;
+    & .logo{
+      margin-top: 50px;
+    }
+    & nav.primary{
+      margin-top: 54px;
+      font-family: 'pt sans';
+      font-size: 18px;
+      float: right;
+      & ul{
+        margin: 0;
+        padding: 0;
+        & li{
+          display: inline-block;
+          margin-left: 50px;
+          & a{
+            color: #fff;
+            padding-bottom: 10px;
+            text-decoration: none;
+            &:hover{
+              border-bottom: 3px solid #ff6a71;
+              transition: 0.3s ease;
+            }
+          }
+        }
+      }
+    }
+    & h1{
+      margin-top: 213px;
+      font-family: 'pt sans caption';
+      font-size: 48px;
+    }
+    & time{
+      opacity: .5;
+      display: block;
+      font-family: 'pt sans';
+      font-size: 14px;
+      margin-bottom: 30px;
+    }
+   }
+
+main{
+  width: 960px;
+  margin: 60px auto 0;
+  & p{
+    width: 800px;
+    font-family: 'pt serif';
+    font-size: 18px;
+    line-height: 30px;
+    color: #82838e;
+    margin: 0 auto 60px;
+  }
+  & image + image, & image + figcaption{
+      margin-bottom: 20px;
+  }
+  & figcaption{
+    text-align: center;
+    margin: 5px auto 35px;
+    font-family: 'pt sans';
+    font-size: 14px;
+    color: #abacae;
+  }
+}
+
+nav.pagination{
+  margin: 100px 0;
+  padding: 29px 0 109px;
+  border-top: 1px dashed #82838e;
+  border-bottom: 1px solid black;
+  & .circle{
+    display: block;
+    background-color: #f2f3f5;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    text-align: center;
+    line-height: 48px;
+  }
+  & a{
+    text-decoration: none;
+    & .pull-left.next-text{
+      text-align: left;
+      margin-left: 10px;
+    }
+    & .pull-right.next-text{
+      text-align: right;
+      margin-right: 10px;
+    }
+    & .next{
+      font-family: 'pt sans';
+      font-size: 14px;
+      color: #abacae;
+    }
+    & .title{
+      font-family: 'pt sans caption';
+      font-size: 18px;
+      color: #2e3039;
+    }
+  }
+}

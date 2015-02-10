@@ -1,0 +1,43 @@
+<header back-image={{PostCtrl.currentPost.background}}>
+    <div class="wrapper">
+        <img class="logo" src="/public/dist/images/logo.png">
+        <nav class="primary">
+            <ul>
+                <li>
+                    <a ng-href="#">Архив</a>
+                </li>
+                <li>
+                    <a ng-href="#">Инфо</a>
+                </li>
+
+            </ul>
+        </nav>
+        <h1>{{PostCtrl.currentPost.title}}</h1>
+        <time>{{PostCtrl.currentPost.date | rusDate}}</time>
+        <p>{{PostCtrl.currentPost.entry}}</p>
+    </div>
+</header>
+
+<main ng-bind-html="PostCtrl.currentPost.output | sanitize">
+</main>
+
+<nav class="pagination">
+    <div class="wrapper">
+        <a class="pull-left" ng-show="PostCtrl.previousPost"  ng-href="/articles/{{PostCtrl.previousPost.visible_id}}">
+        <div class="circle pull-left"><-</div>
+        <div class="pull-left next-text">
+        <p class="next">Предыдущая запись</p>
+        <p class="title">{{PostCtrl.previousPost.title}}</p>
+        </div>
+        </a>
+
+        <a class="pull-right" ng-show="PostCtrl.nextPost" ng-href="/articles/{{PostCtrl.nextPost.visible_id}}">
+            <div class="circle pull-right">-></div>
+            <div class="pull-right next-text">
+                <p class="next">Следующая запись</p>
+                <p class="title">{{PostCtrl.nextPost.title}}</p>
+            </div>
+        </a>
+
+    </div>
+</nav>
