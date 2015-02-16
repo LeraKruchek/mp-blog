@@ -1,17 +1,7 @@
 <header back-image={{FirstPostController.posts[0].background}}>
     <div class="wrapper">
     <img class="logo" src="/public/dist/images/logo.png">
-    <nav class="primary">
-        <ul>
-            <li>
-               <a ng-href="#">Архив</a>
-            </li>
-            <li>
-               <a ng-href="#">Инфо</a>
-            </li>
-
-        </ul>
-    </nav>
+    <nav-primary></nav-primary>
     <h1>{{FirstPostController.posts[0].title}}</h1>
     <time>{{FirstPostController.posts[0].date | rusDate}}</time>
     <p>{{FirstPostController.posts[0].entry}}</p>
@@ -23,14 +13,6 @@
 
 <nav class="pagination">
     <div class="wrapper" ng-show="FirstPostController.posts[1]">
-        <!--<a class="pull-left"  ng-href="#">-->
-            <!--<div class="circle pull-left"><-</div>-->
-            <!--<div class="pull-left next-text">-->
-                <!--<p class="next">Предыдущая запись</p>-->
-                <!--<p class="title">Casio Watch</p>-->
-            <!--</div>-->
-        <!--</a>-->
-
          <a class="pull-right"  ng-href="/articles/{{FirstPostController.posts[1].visible_id}}">
              <div class="circle pull-right">-></div>
              <div class="pull-right next-text">

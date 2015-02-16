@@ -1,17 +1,7 @@
 <header back-image={{PostCtrl.currentPost.background}}>
     <div class="wrapper">
         <img class="logo" src="/public/dist/images/logo.png">
-        <nav class="primary">
-            <ul>
-                <li>
-                    <a ng-href="#">Архив</a>
-                </li>
-                <li>
-                    <a ng-href="#">Инфо</a>
-                </li>
-
-            </ul>
-        </nav>
+        <nav-primary></nav-primary>
         <h1>{{PostCtrl.currentPost.title}}</h1>
         <time>{{PostCtrl.currentPost.date | rusDate}}</time>
         <p>{{PostCtrl.currentPost.entry}}</p>
@@ -26,8 +16,8 @@
         <a class="pull-left" ng-show="PostCtrl.previousPost"  ng-href="/articles/{{PostCtrl.previousPost.visible_id}}">
         <div class="circle pull-left"><-</div>
         <div class="pull-left next-text">
-        <p class="next">Предыдущая запись</p>
-        <p class="title">{{PostCtrl.previousPost.title}}</p>
+            <p class="next">Предыдущая запись</p>
+            <p class="title">{{PostCtrl.previousPost.title}}</p>
         </div>
         </a>
 
