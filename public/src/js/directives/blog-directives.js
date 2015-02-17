@@ -28,7 +28,7 @@
         return{
             restrict: 'E',
             templateUrl: '/public/dist/templates/partials/nav-primary.html'
-        }
+        };
     }
 
 })();

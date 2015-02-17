@@ -11,6 +11,9 @@
             var months = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля',
                 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
             var d = new Date(input);
+            if (d.getFullYear() == '1970'){
+                return 'Черновик';
+            }
             return d.getDate() + ' ' + months[d.getMonth()] + ', ' + d.getFullYear();
         };
     }

@@ -18,8 +18,8 @@
                         accessToken: res.access_token,
                         userName: res.userName
                     };
-                    $window.sessionStorage['userInfo'] = JSON.stringify(authService.userInfo);
-                    d1.resolve(res)
+                    $window.sessionStorage.userInfo = JSON.stringify(authService.userInfo);
+                    d1.resolve(res);
                 })
                 .error(function(res){
                    d1.reject(res);
@@ -30,7 +30,7 @@
 
         authService.logout = function(){
             authService.userInfo = null;
-            $window.sessionStorage["userInfo"] = null;
+            $window.sessionStorage.userInfo = null;
         };
 
         authService.getInfo = function(){
@@ -38,8 +38,8 @@
         };
 
         function init() {
-            if ($window.sessionStorage["userInfo"]) {
-                authService.userInfo = JSON.parse($window.sessionStorage["userInfo"]);
+            if ($window.sessionStorage.userInfo) {
+                authService.userInfo = JSON.parse($window.sessionStorage.userInfo);
             }
         }
         init();

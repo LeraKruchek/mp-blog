@@ -11,9 +11,7 @@
         var self = this;
         self.posts = [];
         PostFactory.getPosts().then(function(data){
-            self.posts = data.sort(function(a,b){
-                return b.date - a.date;
-            });
+            self.posts = data;
         });
     }
 
@@ -25,9 +23,7 @@
         console.log($location.search());
         self.posts = [];
         PostFactory.getPosts().then(function(data){
-            self.posts = data.sort(function(a,b){
-                return b.date - a.date;
-            });
+            self.posts = data;
             self.currentPost = self.posts.filter(function(val){
                 return val.visible_id === id;
             });

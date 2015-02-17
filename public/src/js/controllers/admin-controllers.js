@@ -11,7 +11,7 @@
         var self = this;
         AdminPostFactory.getPosts().then(function(posts){
             self.posts = posts;
-        })
+        });
 
     }
 
@@ -25,9 +25,9 @@
             AuthService.login(self.req).then(function(res){
                 self.req = {};
                 $state.go('admin.home');
-            })
+            });
 
-        }
+        };
     }
 
 

@@ -72,8 +72,9 @@ function removeFromTokens(token) {
 app.get('/api/anon/posts', function(req, res){
     mongoose.set('debug', true);
     Post
-        .where('posted')
-        .equals(true)
+        .where('state')
+        .equals('visible')
+        .sort('date')
         .exec(
         function(err,items){
             res.json(items);
@@ -110,9 +111,25 @@ app.post('/api/login', function(req, res){
 app.all('/api/admin/*', requiresAuthentication);
 
 app.get('/api/admin/posts', function(req, res){
-   Post.find().exec(function(err, items){
-       res.json(items);
-   })
+    var result = [];
+   Post.find()
+       .where('state')
+       .equals('draft')
+       .exec(function(err, items){
+       result = items.slice();
+           Post.find()
+               .where('state')
+               .ne('draft')
+               .sort('-date')
+               .exec(function(err, items){
+                   result = result.concat(items.slice());
+                   res.json(result)
+               });
+   });
+
+
+
+
 });
 
 

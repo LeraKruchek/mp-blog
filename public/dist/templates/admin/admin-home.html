@@ -1,5 +1,17 @@
-<div class="admin_all">
-    <div ng-repeat="post in AdminCtrl.posts">
-        <p>{{post.title}}</p>
+<div class="archive-posts">
+    <div class="item add-new">
+        <a ng-href="#" class="post-image" >
+           <div class="circle">
+               <img src="/public/dist/images/plus.png">
+           </div>
+        </a>
+    </div>
+
+    <div class="item" ng-repeat="post in AdminCtrl.posts">
+    <a ng-href="#" class="post-image" ng-class="{'hidden': post.state == 'hidden' || post.state == 'draft'}"  back-image="{{post.background}}" >
+
+    </a>
+    <p>{{post.title}}</p>
+    <p>{{post.date | rusDate}}</p>
     </div>
 </div>

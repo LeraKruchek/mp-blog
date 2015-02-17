@@ -143,6 +143,96 @@ nav.pagination{
   }
 }
 
-div.admin_all{
+div.archive-posts {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 960px;
+  margin: 0 auto;
+  & .add-new{
+    & .post-image{
+      display: flex;
+      background-color: #f2f3f5;
+      & .circle{
+        display: flex;
+        width: 44px;
+        height: 44px;
+        margin: auto;
+        border: 1px solid #d5d6d9;
+        border-radius: 50%;
+        & img{
+          margin: auto;
+        }
+      }
+    }
+  }
 }
+.item {
+  margin-bottom: 50px;
+  &:nth-child(3n + 2) {
+    margin: 0 30px 50px;
+  }
+}
+.post-image {
+  position: relative;
+  display: block;
+  background-size: cover;
+  width: 300px;
+  height: 200px;
+  &.hidden {
+    &:before {
+      content: "";
+      z-index: 10;
+      display: block;
+      background: rgba(255, 255, 255, 0.75);
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+    &:after {
+      content: "";
+      background: url(/public/dist/images/eye_black.png) no-repeat;
+      z-index: 10;
+      display: block;
+      background-position: top 15px right 15px;
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      top: 0;
+      right: 0;
+    }
+    &:hover {
+      &:before {
+        transition: 0.5s ease;
+        content: "";
+        z-index: 10;
+        display: block;
+        background: rgba(46, 48, 57, 0.75);
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+      &:after {
+        transition: 0.5s ease;
+        content: "";
+        background: url(/public/dist/images/eye_white.png) no-repeat;
+        z-index: 10;
+        display: block;
+        background-position: top 15px right 15px;
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        top: 0;
+        right: 0;
+      }
+    }
+  }}
+
+
+
+
+
