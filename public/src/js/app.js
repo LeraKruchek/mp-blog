@@ -39,7 +39,7 @@ angular.module('blog-app', ['ui.router', 'admin-app','blog-app.directives', 'blo
                     auth: true
                 }
             })
-            .state('admin.home', {
+            .state('admin.archive', {
                 controller: 'AdminController',
                 controllerAs: 'AdminCtrl',
                 url: '/admin',
@@ -47,7 +47,11 @@ angular.module('blog-app', ['ui.router', 'admin-app','blog-app.directives', 'blo
 
             })
 
-
+            .state('admin.new', {
+                url: '/admin/new',
+                controller: '',
+                template: '<p>new</p>'
+             })
             .state('admin.edit',{
                 url: '/admin/edit/:id',
                 controller: 'AdminController',

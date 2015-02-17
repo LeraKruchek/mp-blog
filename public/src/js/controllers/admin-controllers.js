@@ -24,7 +24,7 @@
             self.req.password = self.password;
             AuthService.login(self.req).then(function(res){
                 self.req = {};
-                $state.go('admin.home');
+                $state.go('admin.archive');
             });
 
         };

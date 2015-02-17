@@ -1,9 +1,19 @@
 <header back-image={{FirstPostController.posts[0].background}}>
     <div class="wrapper">
     <img class="logo" src="/public/dist/images/logo.png">
-    <nav-primary></nav-primary>
+        <nav class="primary">
+            <ul>
+                <li>
+                    <a ng-href="#">Архив</a>
+                </li>
+                <li>
+                    <a ng-href="#">Инфо</a>
+                </li>
+
+            </ul>
+        </nav>
     <h1>{{FirstPostController.posts[0].title}}</h1>
-    <time>{{FirstPostController.posts[0].date | rusDate}}</time>
+    <time class="small-font">{{FirstPostController.posts[0].date | rusDate}}</time>
     <p>{{FirstPostController.posts[0].entry}}</p>
     </div>
 </header>
@@ -16,7 +26,7 @@
          <a class="pull-right"  ng-href="/articles/{{FirstPostController.posts[1].visible_id}}">
              <div class="circle pull-right">-></div>
              <div class="pull-right next-text">
-                 <p class="next">Следующая запись</p>
+                 <p class="small-font">Следующая запись</p>
                  <p class="title">{{FirstPostController.posts[1].title}}</p>
              </div>
          </a>

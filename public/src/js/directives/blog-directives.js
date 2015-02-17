@@ -27,6 +27,7 @@
     function navPrimary(){
         return{
             restrict: 'E',
+            replace: true,
             templateUrl: '/public/dist/templates/partials/nav-primary.html'
         };
     }

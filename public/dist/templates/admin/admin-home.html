@@ -1,17 +1,33 @@
+<div class="wrapper admin-wrapper">
+    <img class="logo" src="/public/dist/images/logo-admin.png">
+    <p class="exit small-font" >Режим редактирования, <a href="#">выйти</a></p>
+    <nav class="primary">
+        <ul>
+            <li>
+                <a ng-href="#">Архив</a>
+            </li>
+            <li>
+                <a ng-href="#">Инфо</a>
+            </li>
+
+        </ul>
+    </nav>
 <div class="archive-posts">
-    <div class="item add-new">
-        <a ng-href="#" class="post-image" >
+
+    <div class="item  add-new">
+        <a ui-sref="admin.new" class="post-image" >
            <div class="circle">
                <img src="/public/dist/images/plus.png">
            </div>
         </a>
     </div>
 
-    <div class="item" ng-repeat="post in AdminCtrl.posts">
-    <a ng-href="#" class="post-image" ng-class="{'hidden': post.state == 'hidden' || post.state == 'draft'}"  back-image="{{post.background}}" >
+    <div class="item" ng-class="{'hidden': post.state == 'hidden' || post.state == 'draft'}"   ng-repeat="post in AdminCtrl.posts">
+    <a ng-href="#" class="post-image" back-image="{{post.background}}" >
 
     </a>
-    <p>{{post.title}}</p>
-    <p>{{post.date | rusDate}}</p>
+    <p class="title">{{post.title}}</p>
+    <p class="small-font">{{post.date | rusDate}}</p>
     </div>
+</div>
 </div>

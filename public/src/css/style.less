@@ -19,8 +19,14 @@
 .pull-right{
   float: right;
 }
-
-
+.small-font{
+  font-family: 'pt sans';
+  font-size: 14px;
+  color: #abacae;
+}
+a{
+  text-decoration: none !important;
+}
 body{
   font-family: 'pt serif';
   font-size: 18px;
@@ -50,8 +56,6 @@ header {
     & time{
       opacity: .5;
       display: block;
-      font-family: 'pt sans';
-      font-size: 14px;
       margin-bottom: 30px;
     }
    }
@@ -87,6 +91,7 @@ nav.primary{
   font-family: 'pt sans';
   font-size: 18px;
   float: right;
+  .clearfix();
   & ul{
     margin: 0;
     padding: 0;
@@ -96,7 +101,6 @@ nav.primary{
       & a{
         color: #fff;
         padding-bottom: 10px;
-        text-decoration: none;
         &:hover{
           border-bottom: 3px solid #ff6a71;
           transition: 0.3s ease;
@@ -130,11 +134,6 @@ nav.pagination{
       text-align: right;
       margin-right: 10px;
     }
-    & .next{
-      font-family: 'pt sans';
-      font-size: 14px;
-      color: #abacae;
-    }
     & .title{
       font-family: 'pt sans caption';
       font-size: 18px;
@@ -143,12 +142,38 @@ nav.pagination{
   }
 }
 
+.wrapper.admin-wrapper{
+  & nav.primary{
+    margin-top: 70px;
+    & a{
+      color: #2e3039;
+
+    }
+  }
+  & .logo{
+//    margin-bottom: 30px;
+  }
+  & .exit{
+//    margin-bottom: 30px;
+    display: inline-block;
+    & a{
+      color: #ff6a71;
+      &:hover{
+        &:hover{
+          border-bottom: 2px solid #ff6a71;
+          transition: 0.3s ease;
+        }
+      }
+    }
+  }
+
+}
 div.archive-posts {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
   width: 960px;
-  margin: 0 auto;
+  margin: 60px auto 0;
   & .add-new{
     & .post-image{
       display: flex;
@@ -167,45 +192,40 @@ div.archive-posts {
     }
   }
 }
-.item {
-  margin-bottom: 50px;
-  &:nth-child(3n + 2) {
-    margin: 0 30px 50px;
-  }
-}
+
 .post-image {
   position: relative;
   display: block;
   background-size: cover;
   width: 300px;
   height: 200px;
-  &.hidden {
+
+}
+.item {
+  margin-bottom: 50px;
+  &:nth-child(3n + 2) {
+    margin: 0 30px 50px;
+  }
+  & .title{
+    font-family: 'pt sans caption';
+    font-size: 20px;
+    color: #2e3039;
+  }
+  &:nth-child(n+2) .post-image {
     &:before {
-      content: "";
-      z-index: 10;
+      transition: 0.3s ease;
+      content: '';
       display: block;
-      background: rgba(255, 255, 255, 0.75);
+      background: none;
       position: absolute;
       top: 0;
       right: 0;
       bottom: 0;
       left: 0;
     }
-    &:after {
-      content: "";
-      background: url(/public/dist/images/eye_black.png) no-repeat;
-      z-index: 10;
-      display: block;
-      background-position: top 15px right 15px;
-      position: absolute;
-      width: 50px;
-      height: 50px;
-      top: 0;
-      right: 0;
-    }
     &:hover {
       &:before {
-        transition: 0.5s ease;
+        transition: 0.3s ease;
         content: "";
         z-index: 10;
         display: block;
@@ -216,10 +236,30 @@ div.archive-posts {
         bottom: 0;
         left: 0;
       }
-      &:after {
-        transition: 0.5s ease;
+    }
+  }
+
+    &.hidden {
+      & .title{
+        color: #abacae;
+      }
+      & .post-image{
+      &:before {
+        transition: 0.3s ease;
         content: "";
-        background: url(/public/dist/images/eye_white.png) no-repeat;
+        z-index: 10;
+        display: block;
+        background: rgba(255, 255, 255, 0.75);
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+      &:after {
+        transition: 0.3s ease;
+        content: "";
+        background: url(/public/dist/images/eye_black.png) no-repeat;
         z-index: 10;
         display: block;
         background-position: top 15px right 15px;
@@ -229,9 +269,39 @@ div.archive-posts {
         top: 0;
         right: 0;
       }
+      &:hover + .title{
+        color: #2e3039;
+      }
+      &:hover {
+        &:before {
+          transition: 0.3s ease;
+          content: "";
+          z-index: 10;
+          display: block;
+          background: rgba(46, 48, 57, 0.75);
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+        }
+        &:after {
+          transition: 0.3s ease;
+          content: "";
+          background: url(/public/dist/images/eye_white.png) no-repeat;
+          z-index: 10;
+          display: block;
+          background-position: top 15px right 15px;
+          position: absolute;
+          width: 50px;
+          height: 50px;
+          top: 0;
+          right: 0;
+        }
+      }
     }
-  }}
-
+  }
+}
 
 
 
