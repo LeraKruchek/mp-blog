@@ -23,9 +23,12 @@
     </div>
 
     <div class="item" ng-class="{'hidden': post.state == 'hidden' || post.state == 'draft'}"   ng-repeat="post in AdminCtrl.posts">
-    <a ng-href="#" class="post-image" back-image="{{post.background}}" >
-
-    </a>
+    <div class="post-image" back-image="{{post.background}}" >
+        <div class="controls">
+            <a class="edit" ng-href="admin/edit/{{post.visible_id}}"></a>
+            <a class="delete"></a>
+        </div>
+    </div>
     <p class="title">{{post.title}}</p>
     <p class="small-font">{{post.date | rusDate}}</p>
     </div>

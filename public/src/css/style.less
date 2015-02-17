@@ -195,11 +195,32 @@ div.archive-posts {
 
 .post-image {
   position: relative;
-  display: block;
+  display: flex;
   background-size: cover;
   width: 300px;
   height: 200px;
-
+  & .controls{
+    margin: auto;
+    z-index: 10;
+    display: none;
+    & .edit, & .delete{
+      display: inline-block;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      box-sizing: border-box;
+      background-repeat: no-repeat;
+      background-position: 50%;
+    }
+    & .edit{
+      background-image: url(/public/dist/images/edit.png);
+      background-color: #ff6a71;
+    }
+    & .delete{
+      background-image: url(/public/dist/images/delete.png);
+      border: 2px solid #9c9c9f;
+    }
+  }
 }
 .item {
   margin-bottom: 50px;
@@ -224,6 +245,9 @@ div.archive-posts {
       left: 0;
     }
     &:hover {
+      .controls{
+        display: block;
+      }
       &:before {
         transition: 0.3s ease;
         content: "";
