@@ -52,14 +52,10 @@
         var adminPostFactory = {};
         var userInfo = AuthService.getInfo();
         $http.defaults.headers.get = { "access_token" : userInfo.accessToken };
+        $http.defaults.headers.delete = { "access_token" : userInfo.accessToken };
         adminPostFactory.getPosts = function(){
             var d1 = $q.defer();
-            $http({
-                method: 'GET',
-                url: 'api/admin/posts'
-//                headers: { "access_token": userInfo.accessToken}
-            })
-
+            $http.get('api/admin/posts')
                 .success(function(data){
                     d1.resolve(data);
                 })
@@ -67,6 +63,18 @@
                     d1.reject();
                 });
             return d1.promise;
+        };
+
+        adminPostFactory.deletePost = function(id){
+            var d2 = $q.defer();
+            $http.delete('api/admin/delete/' + id)
+                .success(function(data){
+                    d2.resolve(data);
+                })
+                .error(function(err){
+                    d2.reject();
+                });
+            return d2.promise;
         };
 
 

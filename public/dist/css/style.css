@@ -73,12 +73,16 @@ main p {
   color: #82838e;
   margin: 0 auto 60px;
 }
-main image + image,
-main image + figcaption {
-  margin-bottom: 20px;
+main img {
+  display: block;
+  margin: 0 auto;
 }
-main image + p {
-  margin-bottom: 60px;
+main img + img,
+main img + figcaption {
+  margin-top: 20px;
+}
+main img + p {
+  margin-top: 60px;
 }
 main figcaption {
   text-align: center;
@@ -175,16 +179,18 @@ div.archive-posts .add-new .post-image {
   display: flex;
   background-color: #f2f3f5;
 }
+div.archive-posts .add-new .post-image:hover .circle {
+  background: #ff6a71 url(/public/dist/images/plus_white.png) no-repeat 50%;
+  border: none;
+}
 div.archive-posts .add-new .post-image .circle {
-  display: flex;
+  z-index: 10;
   width: 44px;
   height: 44px;
   margin: auto;
-  border: 1px solid #d5d6d9;
+  border: 2px solid #d5d6d9;
   border-radius: 50%;
-}
-div.archive-posts .add-new .post-image .circle img {
-  margin: auto;
+  background: url(/public/dist/images/plus.png) no-repeat 50%;
 }
 .post-image {
   position: relative;
@@ -194,6 +200,7 @@ div.archive-posts .add-new .post-image .circle img {
   height: 200px;
 }
 .post-image .controls {
+  width: 116px;
   margin: auto;
   z-index: 10;
   display: none;
@@ -207,14 +214,18 @@ div.archive-posts .add-new .post-image .circle img {
   box-sizing: border-box;
   background-repeat: no-repeat;
   background-position: 50%;
+  border: 2px solid #9c9c9f;
+}
+.post-image .controls .edit:hover,
+.post-image .controls .delete:hover {
+  background-color: #ff6a71;
+  border: none;
 }
 .post-image .controls .edit {
   background-image: url(/public/dist/images/edit.png);
-  background-color: #ff6a71;
 }
 .post-image .controls .delete {
   background-image: url(/public/dist/images/delete.png);
-  border: 2px solid #9c9c9f;
 }
 .item {
   margin-bottom: 50px;
@@ -227,7 +238,7 @@ div.archive-posts .add-new .post-image .circle img {
   font-size: 20px;
   color: #2e3039;
 }
-.item:nth-child(n+2) .post-image:before {
+.item .post-image:before {
   transition: 0.3s ease;
   content: '';
   display: block;
@@ -238,10 +249,11 @@ div.archive-posts .add-new .post-image .circle img {
   bottom: 0;
   left: 0;
 }
-.item:nth-child(n+2) .post-image:hover .controls {
-  display: block;
+.item .post-image:hover .controls {
+  display: flex;
+  justify-content: space-between;
 }
-.item:nth-child(n+2) .post-image:hover:before {
+.item .post-image:hover:before {
   transition: 0.3s ease;
   content: "";
   z-index: 10;
@@ -281,9 +293,6 @@ div.archive-posts .add-new .post-image .circle img {
   top: 0;
   right: 0;
 }
-.item.hidden .post-image:hover + .title {
-  color: #2e3039;
-}
 .item.hidden .post-image:hover:before {
   transition: 0.3s ease;
   content: "";
@@ -308,4 +317,12 @@ div.archive-posts .add-new .post-image .circle img {
   height: 50px;
   top: 0;
   right: 0;
+}
+.contenteditable {
+  width: 960px;
+  margin: 0 auto 50px;
+  height: 200px;
+  border: 1px solid grey;
+  display: block;
+  padding: 20px;
 }

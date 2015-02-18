@@ -14,19 +14,18 @@
     </nav>
 <div class="archive-posts">
 
-    <div class="item  add-new">
-        <a ui-sref="admin.new" class="post-image" >
+    <a ui-sref="admin.new" class="item  add-new">
+        <div  class="post-image" >
            <div class="circle">
-               <img src="/public/dist/images/plus.png">
            </div>
-        </a>
-    </div>
+        </div>
+    </a>
 
     <div class="item" ng-class="{'hidden': post.state == 'hidden' || post.state == 'draft'}"   ng-repeat="post in AdminCtrl.posts">
-    <div class="post-image" back-image="{{post.background}}" >
+    <div class="post-image" ng-back-image="{{post.background}}" >
         <div class="controls">
             <a class="edit" ng-href="admin/edit/{{post.visible_id}}"></a>
-            <a class="delete"></a>
+            <a class="delete" ng-href  ng-click="AdminCtrl.deletePost(post._id, $index)" ></a>
         </div>
     </div>
     <p class="title">{{post.title}}</p>

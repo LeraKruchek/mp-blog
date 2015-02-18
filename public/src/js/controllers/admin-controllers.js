@@ -4,16 +4,8 @@
 (function(){
     angular.module('admin-app.controllers', ['admin-app.services'])
         .controller('AdminController', AdminController)
-        .controller('LoginController', LoginController);
-
-    AdminController.$inject = ['AdminPostFactory'];
-    function AdminController(AdminPostFactory){
-        var self = this;
-        AdminPostFactory.getPosts().then(function(posts){
-            self.posts = posts;
-        });
-
-    }
+        .controller('LoginController', LoginController)
+        .controller('NewPostController', NewPostController);
 
     LoginController.$inject = ['AuthService', '$state'];
     function LoginController(AuthService, $state){
@@ -28,6 +20,29 @@
             });
 
         };
+    }
+
+    AdminController.$inject = ['AdminPostFactory', '$scope'];
+    function AdminController(AdminPostFactory, $scope){
+        var self = this;
+        self.posts = [];
+        AdminPostFactory.getPosts().then(function(posts){
+            self.posts = posts;
+        });
+        self.deletePost = function(id, ind){
+            AdminPostFactory.deletePost(id).then(function(res){
+                self.posts.splice(ind,1);
+            });
+        };
+
+    }
+
+    NewPostController.$inject = ['$scope'];
+    function NewPostController(){
+        var self = this;
+        self.newPost = {};
+        self.newPost.text = 'hi';
+        self.newPost.date = new Date();
     }
 
 

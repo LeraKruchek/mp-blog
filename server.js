@@ -125,11 +125,15 @@ app.get('/api/admin/posts', function(req, res){
                    result = result.concat(items.slice());
                    res.json(result)
                });
-   });
+       });
+});
 
-
-
-
+app.delete('/api/admin/delete/:post_id', function(req, res){
+    Post.findOneAndRemove({
+        _id: req.params.post_id
+    }, function(err, item){
+        res.json(item);
+    })
 });
 
 

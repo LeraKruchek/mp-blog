@@ -3,17 +3,17 @@
  */
 (function(){
     angular.module('blog-app.directives', [])
-        .directive('backImage', backImage)
+        .directive('ngBackImage', ngBackImage)
         .directive('navPrimary', navPrimary);
 
-    function backImage() {
+    function ngBackImage() {
         return{
             restrict: 'A',
             scope :{
-                backImage: '@'
+                ngBackImage: '@'
             },
             link: function (scope, element, attrs) {
-                attrs.$observe('backImage', function(url){
+                attrs.$observe('ngBackImage', function(url){
                         element.css({
                             'background-image': 'url(' + url + ')',
                             'background-size': 'cover'

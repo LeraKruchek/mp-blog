@@ -3,6 +3,8 @@
   padding: 0;
 }
 
+@link-red: #ff6a71;
+
 .clearfix{
   &:before,
   &:after {
@@ -71,11 +73,15 @@ main{
     color: #82838e;
     margin: 0 auto 60px;
   }
-  & image + image, & image + figcaption{
-      margin-bottom: 20px;
+  & img{
+    display: block;
+    margin: 0 auto;
   }
-  & image + p{
-    margin-bottom: 60px;
+  & img + img, & img + figcaption{
+      margin-top: 20px;
+  }
+  & img + p{
+    margin-top: 60px;
   }
   & figcaption{
     text-align: center;
@@ -102,7 +108,7 @@ nav.primary{
         color: #fff;
         padding-bottom: 10px;
         &:hover{
-          border-bottom: 3px solid #ff6a71;
+          border-bottom: 3px solid @link-red;
           transition: 0.3s ease;
         }
       }
@@ -157,10 +163,10 @@ nav.pagination{
 //    margin-bottom: 30px;
     display: inline-block;
     & a{
-      color: #ff6a71;
+      color:@link-red;
       &:hover{
         &:hover{
-          border-bottom: 2px solid #ff6a71;
+          border-bottom: 2px solid @link-red;
           transition: 0.3s ease;
         }
       }
@@ -176,18 +182,22 @@ div.archive-posts {
   margin: 60px auto 0;
   & .add-new{
     & .post-image{
+      &:hover{
+        .circle{
+          background: @link-red url(/public/dist/images/plus_white.png) no-repeat 50%;
+          border: none;
+        }
+      }
       display: flex;
       background-color: #f2f3f5;
       & .circle{
-        display: flex;
+        z-index: 10;
         width: 44px;
         height: 44px;
         margin: auto;
-        border: 1px solid #d5d6d9;
+        border: 2px solid #d5d6d9;
         border-radius: 50%;
-        & img{
-          margin: auto;
-        }
+        background: url(/public/dist/images/plus.png) no-repeat 50%;
       }
     }
   }
@@ -200,6 +210,7 @@ div.archive-posts {
   width: 300px;
   height: 200px;
   & .controls{
+    width: 116px;
     margin: auto;
     z-index: 10;
     display: none;
@@ -211,15 +222,19 @@ div.archive-posts {
       box-sizing: border-box;
       background-repeat: no-repeat;
       background-position: 50%;
+      border: 2px solid #9c9c9f;
+      &:hover{
+        background-color: @link-red;
+        border: none;
+      }
     }
     & .edit{
       background-image: url(/public/dist/images/edit.png);
-      background-color: #ff6a71;
     }
     & .delete{
       background-image: url(/public/dist/images/delete.png);
-      border: 2px solid #9c9c9f;
-    }
+
+  }
   }
 }
 .item {
@@ -232,7 +247,7 @@ div.archive-posts {
     font-size: 20px;
     color: #2e3039;
   }
-  &:nth-child(n+2) .post-image {
+  & .post-image {
     &:before {
       transition: 0.3s ease;
       content: '';
@@ -246,7 +261,8 @@ div.archive-posts {
     }
     &:hover {
       .controls{
-        display: block;
+        display: flex;
+        justify-content: space-between;
       }
       &:before {
         transition: 0.3s ease;
@@ -293,9 +309,6 @@ div.archive-posts {
         top: 0;
         right: 0;
       }
-      &:hover + .title{
-        color: #2e3039;
-      }
       &:hover {
         &:before {
           transition: 0.3s ease;
@@ -325,6 +338,15 @@ div.archive-posts {
       }
     }
   }
+}
+
+.contenteditable{
+  width: 960px;
+  margin: 0 auto 50px;
+  height: 200px;
+  border: 1px solid grey;
+  display: block;
+  padding: 20px;
 }
 
 

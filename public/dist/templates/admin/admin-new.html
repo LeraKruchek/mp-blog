@@ -1,0 +1,23 @@
+<input type="text" placeholder="post title" ng-model="NewPostCtrl.newPost.title">
+<input type="text" placeholder="post background" ng-model="NewPostCtrl.newPost.background">
+<textarea ng-model="NewPostCtrl.newPost.text" class="contenteditable"></textarea>
+<header ng-back-image={{NewPostCtrl.newPost.background}}>
+    <div class="wrapper">
+        <img class="logo" src="/public/dist/images/logo.png">
+        <nav class="primary">
+            <ul>
+                <li>
+                    <a ng-href="#">Архив</a>
+                </li>
+                <li>
+                    <a ng-href="#">Инфо</a>
+                </li>
+
+            </ul>
+        </nav>
+        <h1>{{NewPostCtrl.newPost.title}}</h1>
+        <time class="small-font" >{{NewPostCtrl.newPost.date | rusDate}}</time>
+        <p>{{NewPostCtrl.newPost.entry}}</p>
+    </div>
+</header>
+<main ng-bind-html="NewPostCtrl.newPost.text | sanitize"></main>

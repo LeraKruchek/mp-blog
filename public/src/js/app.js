@@ -49,8 +49,9 @@ angular.module('blog-app', ['ui.router', 'admin-app','blog-app.directives', 'blo
 
             .state('admin.new', {
                 url: '/admin/new',
-                controller: '',
-                template: '<p>new</p>'
+                controller: 'NewPostController',
+                controllerAs:'NewPostCtrl',
+                templateUrl: '/public/dist/templates/admin/admin-new.html'
              })
             .state('admin.edit',{
                 url: '/admin/edit/:id',
