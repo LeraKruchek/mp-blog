@@ -18,8 +18,12 @@
                 self.req = {};
                 $state.go('admin.archive');
             });
-
         };
+        self.logout = function(){
+            AuthService.logout();
+            $state.go('anon.login');
+        };
+
     }
 
     AdminController.$inject = ['AdminPostFactory', '$scope'];
@@ -34,7 +38,9 @@
                 self.posts.splice(ind,1);
             });
         };
-
+        self.hi = function(item){
+            console.log(item);
+        };
     }
 
     NewPostController.$inject = ['$scope'];

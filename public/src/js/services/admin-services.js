@@ -53,6 +53,7 @@
         var userInfo = AuthService.getInfo();
         $http.defaults.headers.get = { "access_token" : userInfo.accessToken };
         $http.defaults.headers.delete = { "access_token" : userInfo.accessToken };
+
         adminPostFactory.getPosts = function(){
             var d1 = $q.defer();
             $http.get('api/admin/posts')

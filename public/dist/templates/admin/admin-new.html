@@ -1,6 +1,36 @@
-<input type="text" placeholder="post title" ng-model="NewPostCtrl.newPost.title">
-<input type="text" placeholder="post background" ng-model="NewPostCtrl.newPost.background">
-<textarea ng-model="NewPostCtrl.newPost.text" class="contenteditable"></textarea>
+
+<section class="editor small-font" >
+    <h1>Добавить новую статью</h1>
+    <div class="half pull-left">
+        <label>
+            Ссылка на главное изображение
+            <input type="text" ng-model="NewPostCtrl.newPost.background">
+        </label>
+        <label>
+            Название статьи
+            <input type="text" ng-model="NewPostCtrl.newPost.title">
+        </label>
+        <label>
+            ID статьи в адресной строке
+            <input type="text" ng-model="NewPostCtrl.newPost.visible_id">
+        </label>
+    </div>
+    <div class="half pull-right">
+        <label>
+            Ссылка на изображение в архиве (миниатюра)
+            <input type="text" ng-model="NewPostCtrl.newPost.miniature">
+        </label>
+        <label>
+            Вводный текст
+            <textarea ng-model="NewPostCtrl.newPost.entry"></textarea>
+        </label>
+    </div>
+
+    <label>
+        Содержимое статьи (HTML)
+        <textarea ng-model="NewPostCtrl.newPost.text" class="contenteditable"></textarea>
+    </label>
+</section>
 <header ng-back-image={{NewPostCtrl.newPost.background}}>
     <div class="wrapper">
         <img class="logo" src="/public/dist/images/logo.png">
@@ -20,4 +50,7 @@
         <p>{{NewPostCtrl.newPost.entry}}</p>
     </div>
 </header>
+
 <main ng-bind-html="NewPostCtrl.newPost.text | sanitize"></main>
+
+<ng-result-action></ng-result-action>

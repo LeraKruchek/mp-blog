@@ -2,7 +2,7 @@
  * Created by Valeryia_Kruchak on 09-Feb-15.
  */
 (function() {
-angular.module('blog-app', ['ui.router', 'admin-app','blog-app.directives', 'blog-app.controllers'])
+angular.module('blog-app', ['ui.router', 'admin-app', 'confirm-app', 'blog-app.directives', 'blog-app.controllers'])
     .config(['$locationProvider', '$stateProvider', '$urlRouterProvider', function($locationProvider, $stateProvider, $urlRouterProvider){
         $locationProvider.html5Mode(true);
         $urlRouterProvider.otherwise('/');
@@ -43,7 +43,7 @@ angular.module('blog-app', ['ui.router', 'admin-app','blog-app.directives', 'blo
                 controller: 'AdminController',
                 controllerAs: 'AdminCtrl',
                 url: '/admin',
-                templateUrl: '/public/dist/templates/admin/admin-home.html'
+                templateUrl: '/public/dist/templates/admin/admin-archive.html'
 
             })
 
@@ -67,9 +67,14 @@ angular.module('blog-app', ['ui.router', 'admin-app','blog-app.directives', 'blo
     .run(['$rootScope', '$state', 'AuthService', function ($rootScope, $state, AuthService) {
 
         $rootScope.$on("$stateChangeStart", function (event, toState, toParams, fromState, fromParams) {
-
+            var user = AuthService.getInfo();
+            if (toState.name === 'anon.login'){
+                if(user){
+                    event.preventDefault();
+                    $state.go('admin.archive');
+                }
+            }
             if(toState.data){
-                var user = AuthService.getInfo();
                 if (!user){
                     event.preventDefault();
                     $state.go('anon.login');

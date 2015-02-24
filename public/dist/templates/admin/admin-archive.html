@@ -1,0 +1,35 @@
+<div class="wrapper admin-wrapper">
+    <img class="logo" src="/public/dist/images/logo-admin.png">
+    <p class="exit small-font" ng-controller="LoginController as LoginCtrl">Режим редактирования, <a href ng-click="LoginCtrl.logout()">выйти</a></p>
+    <nav class="primary">
+        <ul>
+            <li>
+                <a ng-href="#">Архив</a>
+            </li>
+            <li>
+                <a ng-href="#">Инфо</a>
+            </li>
+
+        </ul>
+    </nav>
+<div class="archive-posts">
+
+    <a ui-sref="admin.new" class="item  add-new">
+        <div  class="post-image" >
+           <div class="circle">
+           </div>
+        </div>
+    </a>
+
+    <div class="item" ng-class="{'hidden': post.state == 'hidden' || post.state == 'draft'}"   ng-repeat="post in AdminCtrl.posts">
+    <div class="post-image" ng-back-image="{{post.miniature}}" >
+        <div class="controls" >
+            <a class="edit"  message="really edit?" ng-really-click="AdminCtrl.hi(post.title)" ></a>
+            <a class="delete" ng-href message="really delete?" ng-really-click="AdminCtrl.deletePost(post._id, $index)" ></a>
+        </div>
+    </div>
+    <p class="title">{{post.title}}</p>
+    <p class="small-font">{{post.date | rusDate}}</p>
+    </div>
+</div>
+</div>
