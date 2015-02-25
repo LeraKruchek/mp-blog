@@ -15,20 +15,27 @@ angular.module('blog-app', ['ui.router', 'admin-app', 'confirm-app', 'blog-app.d
                 url: '/',
                 controller: 'FirstPostController',
                 controllerAs: 'FirstPostController',
-                templateUrl: '/public/dist/templates/first-post.html'
+                templateUrl: '/public/dist/templates/anon/first-post.html'
             })
             .state('anon.post', {
                 url: '/articles/:id',
                 controller: 'PostController',
                 controllerAs: 'PostCtrl',
-                templateUrl: '/public/dist/templates/single-post.html'
+                templateUrl: '/public/dist/templates/anon/single-post.html'
             })
             .state('anon.login',{
                 url: '/login',
                 controller: 'LoginController',
                 controllerAs: 'LoginCtrl',
-                templateUrl: '/public/dist/templates/login-page.html'
-            });
+                templateUrl: '/public/dist/templates/anon/login-page.html'
+            })
+            .state('anon.archive',{
+                url: '/archive',
+                controller: 'ArchiveController',
+                controllerAs: 'ArchiveCtrl',
+                templateUrl: '/public/dist/templates/anon/archive-page.html'
+            })
+        ;
 
             $stateProvider
             .state('admin',{

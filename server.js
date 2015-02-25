@@ -27,8 +27,9 @@ var PostSchema = new mongoose.Schema({
     entry: { type : String},
     date: { type : Date},
     background: { type : String},
+    miniature: { type: String},
     output: { type : String},
-    posted : { type : Boolean}
+    state : { type : String}
 });
 
 var Post = mongoose.model('posts', PostSchema);
@@ -53,11 +54,11 @@ function requiresAuthentication(request, response, next) {
                 return;
             } else {
 //                removeFromTokens();
-                response.end(401, "Your session has expired");
+                response.send(401, "Your session has expired");
             }
 //        }
     }
-    response.end(401, "You don't have access");
+    response.send(401, "You don't have access");
 }
 
 function removeFromTokens(token) {
@@ -136,7 +137,20 @@ app.delete('/api/admin/delete/:post_id', function(req, res){
     })
 });
 
-
+app.post('/api/admin/posts', function(req, res){
+   Post.create({
+       visible_id: req.body.visible_id,
+       title: req.body.title,
+       entry: req.body.entry,
+       date: req.body.date,
+       background: req.body.background,
+       miniature: req.body.miniature,
+       output: req.body.text,
+       state : req.body.state
+   }, function(err, item){
+       res.send(200, 'ok');
+   })
+});
 
 app.get('*', function(req, res) {
     res.sendfile('./public/views/index.html');

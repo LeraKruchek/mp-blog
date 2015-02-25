@@ -41,14 +41,28 @@
         self.hi = function(item){
             console.log(item);
         };
+
     }
 
-    NewPostController.$inject = ['$scope'];
-    function NewPostController(){
+    NewPostController.$inject = ['AdminPostFactory', '$state', '$sanitize'];
+    function NewPostController(AdminPostFactory, $state, $sanitize){
         var self = this;
         self.newPost = {};
-        self.newPost.text = 'hi';
         self.newPost.date = new Date();
+        self.addPost = function(){
+            self.newPost.text = $sanitize(self.newPost.text);
+            if (self.newPost.state === true){
+                self.newPost.state = 'draft';
+            }
+            else{
+                self.newPost.state = 'visible';
+            }
+            AdminPostFactory.addPost(self.newPost).then(function(data){
+                self.newPost = {};
+                console.log(data);
+                $state.go('admin.archive');
+            });
+        };
     }
 
 

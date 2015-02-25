@@ -1,5 +1,8 @@
 <div class="result_action">
-    <input type="checkbox">Скрыть статью
-    <button class="btn-result">Применить</button>
+    <label class="small-font">
+    <input type="checkbox" ng-model="NewPostCtrl.newPost.state">
+        Скрыть статью
+    </label>
+    <button class="btn-result" message="really add?" ng-really-click="NewPostCtrl.addPost()">Применить</button>
     <button class="btn-result">Отменить и уйти</button>
 </div>

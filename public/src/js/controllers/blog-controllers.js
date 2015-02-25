@@ -4,7 +4,8 @@
 (function(){
     angular.module('blog-app.controllers', ['blog-app.services', 'blog-app.filters'])
         .controller('FirstPostController', FirstPostController)
-        .controller('PostController', PostController);
+        .controller('PostController', PostController)
+        .controller('ArchiveController', ArchiveController);
 
     FirstPostController.$inject = ['$scope', 'PostFactory'];
     function FirstPostController($scope, PostFactory){
@@ -30,6 +31,15 @@
             self.currentPost = self.currentPost[0];
             self.nextPost = self.posts[self.posts.indexOf(self.currentPost) + 1];
             self.previousPost = self.posts[self.posts.indexOf(self.currentPost) - 1];
+        });
+    }
+
+    ArchiveController.$inject = ['PostFactory'];
+    function ArchiveController(PostController){
+        var self = this;
+        self.posts = [];
+        PostController.getPosts().then(function(data){
+            self.posts = data.reverse();
         });
     }
 

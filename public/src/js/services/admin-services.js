@@ -53,6 +53,8 @@
         var userInfo = AuthService.getInfo();
         $http.defaults.headers.get = { "access_token" : userInfo.accessToken };
         $http.defaults.headers.delete = { "access_token" : userInfo.accessToken };
+        $http.defaults.headers.post = { "access_token" : userInfo.accessToken };
+        $http.defaults.headers.post["Content-Type"] = "application/json";
 
         adminPostFactory.getPosts = function(){
             var d1 = $q.defer();
@@ -78,6 +80,17 @@
             return d2.promise;
         };
 
+        adminPostFactory.addPost = function(newPost){
+            var d3 = $q.defer();
+            $http.post('api/admin/posts', newPost)
+                .success(function(data){
+                    d3.resolve(data);
+                })
+                .error(function(){
+                    d3.reject();
+                });
+            return d3.promise;
+        };
 
         return adminPostFactory;
     }
