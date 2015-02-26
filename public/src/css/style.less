@@ -246,6 +246,7 @@ div.archive-posts {
 }
 .item {
   margin-bottom: 50px;
+  cursor: pointer;
   &:nth-child(3n + 2) {
     margin: 0 30px 50px;
   }
@@ -255,68 +256,23 @@ div.archive-posts {
     color: #2e3039;
   }
   & .post-image {
-    &:before {
-      transition: 0.3s ease;
-      content: '';
-      display: block;
-      background: none;
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-    }
-    &:hover {
-      .controls{
-        display: flex;
-        justify-content: space-between;
-      }
+    &.hover-effects{
       &:before {
         transition: 0.3s ease;
-        content: "";
-        z-index: 10;
+        content: '';
         display: block;
-        background: rgba(46, 48, 57, 0.75);
+        background: none;
         position: absolute;
         top: 0;
         right: 0;
         bottom: 0;
         left: 0;
-      }
-    }
-  }
-
-    &.hidden {
-      & .title{
-        color: #abacae;
-      }
-      & .post-image{
-      &:before {
-        transition: 0.3s ease;
-        content: "";
-        z-index: 10;
-        display: block;
-        background: rgba(255, 255, 255, 0.75);
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-      }
-      &:after {
-        transition: 0.3s ease;
-        content: "";
-        background: url(/public/dist/images/eye_black.png) no-repeat;
-        z-index: 10;
-        display: block;
-        background-position: top 15px right 15px;
-        position: absolute;
-        width: 50px;
-        height: 50px;
-        top: 0;
-        right: 0;
       }
       &:hover {
+        .controls {
+          display: flex;
+          justify-content: space-between;
+        }
         &:before {
           transition: 0.3s ease;
           content: "";
@@ -329,21 +285,70 @@ div.archive-posts {
           bottom: 0;
           left: 0;
         }
-        &:after {
-          transition: 0.3s ease;
-          content: "";
-          background: url(/public/dist/images/eye_white.png) no-repeat;
-          z-index: 10;
-          display: block;
-          background-position: top 15px right 15px;
-          position: absolute;
-          width: 50px;
-          height: 50px;
-          top: 0;
-          right: 0;
-        }
       }
     }
+  }
+
+    &.hidden {
+      & .title{
+        color: #abacae;
+      }
+      & .post-image {
+        &.hover-effects {
+          &:before {
+            transition: 0.3s ease;
+            content: "";
+            z-index: 10;
+            display: block;
+            background: rgba(255, 255, 255, 0.75);
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+          }
+          &:after {
+            transition: 0.3s ease;
+            content: "";
+            background: url(/public/dist/images/eye_black.png) no-repeat;
+            z-index: 10;
+            display: block;
+            background-position: top 15px right 15px;
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            top: 0;
+            right: 0;
+          }
+          &:hover {
+            &:before {
+              transition: 0.3s ease;
+              content: "";
+              z-index: 10;
+              display: block;
+              background: rgba(46, 48, 57, 0.75);
+              position: absolute;
+              top: 0;
+              right: 0;
+              bottom: 0;
+              left: 0;
+            }
+            &:after {
+              transition: 0.3s ease;
+              content: "";
+              background: url(/public/dist/images/eye_white.png) no-repeat;
+              z-index: 10;
+              display: block;
+              background-position: top 15px right 15px;
+              position: absolute;
+              width: 50px;
+              height: 50px;
+              top: 0;
+              right: 0;
+            }
+          }
+        }
+      }
   }
 }
 

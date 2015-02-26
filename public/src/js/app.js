@@ -34,8 +34,7 @@ angular.module('blog-app', ['ui.router', 'admin-app', 'confirm-app', 'blog-app.d
                 controller: 'ArchiveController',
                 controllerAs: 'ArchiveCtrl',
                 templateUrl: '/public/dist/templates/anon/archive-page.html'
-            })
-        ;
+            });
 
             $stateProvider
             .state('admin',{
@@ -49,7 +48,7 @@ angular.module('blog-app', ['ui.router', 'admin-app', 'confirm-app', 'blog-app.d
             .state('admin.archive', {
                 controller: 'AdminController',
                 controllerAs: 'AdminCtrl',
-                url: '/admin',
+                url: '/admin/archive',
                 templateUrl: '/public/dist/templates/admin/admin-archive.html'
 
             })
@@ -61,13 +60,11 @@ angular.module('blog-app', ['ui.router', 'admin-app', 'confirm-app', 'blog-app.d
                 templateUrl: '/public/dist/templates/admin/admin-new.html'
              })
             .state('admin.edit',{
-                url: '/admin/edit/:id',
-                controller: 'AdminController',
-                template: "<p>edit</p>"
+                url: '/admin/edit/:visible_id',
+                controller: 'EditPostController',
+                controllerAs: 'EditPostCtrl',
+                templateUrl: '/public/dist/templates/admin/admin-edit.html'
             });
-
-
-
 
     }])
 

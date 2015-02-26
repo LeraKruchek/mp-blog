@@ -54,7 +54,9 @@
         $http.defaults.headers.get = { "access_token" : userInfo.accessToken };
         $http.defaults.headers.delete = { "access_token" : userInfo.accessToken };
         $http.defaults.headers.post = { "access_token" : userInfo.accessToken };
+        $http.defaults.headers.put = { "access_token" : userInfo.accessToken };
         $http.defaults.headers.post["Content-Type"] = "application/json";
+        $http.defaults.headers.put["Content-Type"] = "application/json";
 
         adminPostFactory.getPosts = function(){
             var d1 = $q.defer();
@@ -66,6 +68,18 @@
                     d1.reject();
                 });
             return d1.promise;
+        };
+
+        adminPostFactory.getPost = function(visible_id){
+            var d4 = $q.defer();
+            $http.get('api/admin/post/' + visible_id)
+                .success(function(data){
+                    d4.resolve(data);
+                })
+                .error(function(err){
+                    d4.reject(err);
+                });
+            return d4.promise;
         };
 
         adminPostFactory.deletePost = function(id){
@@ -91,6 +105,19 @@
                 });
             return d3.promise;
         };
+
+        adminPostFactory.savePost = function(id, post){
+            var d5 = $q.defer();
+            $http.put('api/admin/post/' + id, post)
+                .success(function(data){
+                    d5.resolve(data);
+                })
+                .error(function(){
+                    d5.reject();
+                });
+            return d5.promise;
+        };
+
 
         return adminPostFactory;
     }

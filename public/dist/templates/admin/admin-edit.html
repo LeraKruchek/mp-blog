@@ -1,0 +1,63 @@
+<section class="editor small-font" >
+    <h1>Редактирование статьи</h1>
+    <div class="half pull-left">
+        <label>
+            Ссылка на главное изображение
+            <input type="text" ng-model="EditPostCtrl.post.background">
+        </label>
+        <label>
+            Название статьи
+            <input type="text" ng-model="EditPostCtrl.post.title">
+        </label>
+        <label>
+            ID статьи в адресной строке
+            <input type="text" ng-model="EditPostCtrl.post.visible_id">
+        </label>
+    </div>
+    <div class="half pull-right">
+        <label>
+            Ссылка на изображение в архиве (миниатюра)
+            <input type="text" ng-model="EditPostCtrl.post.miniature">
+        </label>
+        <label>
+            Вводный текст
+            <textarea ng-model="EditPostCtrl.post.entry"></textarea>
+        </label>
+    </div>
+
+    <label>
+        Содержимое статьи (HTML)
+        <textarea ng-model="EditPostCtrl.post.output" class="contenteditable"></textarea>
+    </label>
+</section>
+<header ng-back-image={{EditPostCtrl.post.background}}>
+    <div class="wrapper">
+        <img class="logo" src="/public/dist/images/logo.png">
+        <nav class="primary">
+            <ul>
+                <li>
+                    <a ng-href="#">Архив</a>
+                </li>
+                <li>
+                    <a ng-href="#">Инфо</a>
+                </li>
+
+            </ul>
+        </nav>
+        <h1>{{EditPostCtrl.post.title}}</h1>
+        <time class="small-font" >{{EditPostCtrl.post.date | rusDate}}</time>
+        <p>{{EditPostCtrl.post.entry}}</p>
+    </div>
+</header>
+
+<main ng-bind-html="EditPostCtrl.post.output | sanitize"></main>
+
+<div class="result_action">
+    <label class="small-font">
+        <input type="checkbox" ng-model="EditPostCtrl.state">
+        Скрыть статью
+    </label>
+    <button class="btn-result" message="really save?" ng-really-click="EditPostCtrl.savePost()">Применить</button>
+    <button class="btn-result">Отменить и уйти</button>
+</div>
+

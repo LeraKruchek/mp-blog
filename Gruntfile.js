@@ -3,16 +3,31 @@
  */
 // Gruntfile.js
 module.exports = function(grunt) {
+    grunt.loadNpmTasks('grunt-include-source');
 
     grunt.initConfig({
+        includeSource: {
+          options: {
+              basePath: '',
+              templates: {
+                  html: {
+                      js: '<script src="/{filePath}"></script>'
+                  }
+              }
+          },
+          myTarget: {
+              files: {
+                 'public/views/index.html':  'public/views/index.tpl.html'
+              }
+          }
+        },
 
-        // JS TASKS ================================================================
-        // check all js files for errors
+
+
         jshint: {
             all: ['public/src/js/**/*.js']
         },
 
-        // take all the js files and minify them into app.min.js
         uglify: {
             build: {
                 files: {
@@ -20,9 +35,6 @@ module.exports = function(grunt) {
                 }
             }
         },
-
-        // CSS TASKS ===============================================================
-        // process the less file to style.css
         less: {
             build: {
                 files: {
@@ -30,8 +42,6 @@ module.exports = function(grunt) {
                 }
             }
         },
-
-        // take the processed style.css file and minify
         cssmin: {
             build: {
                 files: {
@@ -40,8 +50,6 @@ module.exports = function(grunt) {
             }
         },
 
-        // COOL TASKS ==============================================================
-        // watch css and js files and process the above tasks
         watch: {
             css: {
                 files: ['public/src/css/**/*.less'],
@@ -53,14 +61,14 @@ module.exports = function(grunt) {
             }
         },
 
-        // watch our node server for changes
+
         nodemon: {
             dev: {
                 script: 'server.js'
             }
         },
 
-        // run watch and nodemon at the same time
+
         concurrent: {
             options: {
                 logConcurrentOutput: true
@@ -70,6 +78,7 @@ module.exports = function(grunt) {
 
     });
 
+
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-less');
@@ -78,6 +87,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-nodemon');
     grunt.loadNpmTasks('grunt-concurrent');
 
-    grunt.registerTask('default', ['less', 'cssmin', 'jshint', 'uglify', 'concurrent']);
+    grunt.registerTask('default', ['includeSource:myTarget', 'less', 'cssmin', 'jshint', 'uglify', 'concurrent']);
 
 };

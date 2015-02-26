@@ -237,6 +237,7 @@ div.archive-posts .add-new .post-image .circle {
 }
 .item {
   margin-bottom: 50px;
+  cursor: pointer;
 }
 .item:nth-child(3n + 2) {
   margin: 0 30px 50px;
@@ -246,7 +247,7 @@ div.archive-posts .add-new .post-image .circle {
   font-size: 20px;
   color: #2e3039;
 }
-.item .post-image:before {
+.item .post-image.hover-effects:before {
   transition: 0.3s ease;
   content: '';
   display: block;
@@ -257,11 +258,11 @@ div.archive-posts .add-new .post-image .circle {
   bottom: 0;
   left: 0;
 }
-.item .post-image:hover .controls {
+.item .post-image.hover-effects:hover .controls {
   display: flex;
   justify-content: space-between;
 }
-.item .post-image:hover:before {
+.item .post-image.hover-effects:hover:before {
   transition: 0.3s ease;
   content: "";
   z-index: 10;
@@ -276,7 +277,7 @@ div.archive-posts .add-new .post-image .circle {
 .item.hidden .title {
   color: #abacae;
 }
-.item.hidden .post-image:before {
+.item.hidden .post-image.hover-effects:before {
   transition: 0.3s ease;
   content: "";
   z-index: 10;
@@ -288,7 +289,7 @@ div.archive-posts .add-new .post-image .circle {
   bottom: 0;
   left: 0;
 }
-.item.hidden .post-image:after {
+.item.hidden .post-image.hover-effects:after {
   transition: 0.3s ease;
   content: "";
   background: url(/public/dist/images/eye_black.png) no-repeat;
@@ -301,7 +302,7 @@ div.archive-posts .add-new .post-image .circle {
   top: 0;
   right: 0;
 }
-.item.hidden .post-image:hover:before {
+.item.hidden .post-image.hover-effects:hover:before {
   transition: 0.3s ease;
   content: "";
   z-index: 10;
@@ -313,7 +314,7 @@ div.archive-posts .add-new .post-image .circle {
   bottom: 0;
   left: 0;
 }
-.item.hidden .post-image:hover:after {
+.item.hidden .post-image.hover-effects:hover:after {
   transition: 0.3s ease;
   content: "";
   background: url(/public/dist/images/eye_white.png) no-repeat;

@@ -145,11 +145,42 @@ app.post('/api/admin/posts', function(req, res){
        date: req.body.date,
        background: req.body.background,
        miniature: req.body.miniature,
-       output: req.body.text,
+       output: req.body.output,
        state : req.body.state
    }, function(err, item){
        res.send(200, 'ok');
    })
+});
+
+app.put('/api/admin/post/:id', function(req, res){
+    Post.update({
+        _id : req.params.id
+    },
+        {
+            $set:{
+                visible_id: req.body.visible_id,
+                title: req.body.title,
+                entry: req.body.entry,
+                date: req.body.date,
+                background: req.body.background,
+                miniature: req.body.miniature,
+                output: req.body.output,
+                state: req.body.state
+            }
+        },
+    function(err, post){
+        res.json(post);
+    })
+});
+
+app.get('/api/admin/post/:visible_id', function(req, res){
+   var vis_id = req.params.visible_id;
+   Post.find()
+       .where('visible_id')
+       .equals(vis_id)
+       .exec(function(err, data){
+           res.json(data);
+       })
 });
 
 app.get('*', function(req, res) {

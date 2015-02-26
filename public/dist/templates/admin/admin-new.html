@@ -28,7 +28,7 @@
 
     <label>
         Содержимое статьи (HTML)
-        <textarea ng-model="NewPostCtrl.newPost.text" class="contenteditable"></textarea>
+        <textarea ng-model="NewPostCtrl.newPost.output" class="contenteditable"></textarea>
     </label>
 </section>
 <header ng-back-image={{NewPostCtrl.newPost.background}}>
@@ -51,6 +51,14 @@
     </div>
 </header>
 
-<main ng-bind-html="NewPostCtrl.newPost.text | sanitize"></main>
+<main ng-bind-html="NewPostCtrl.newPost.output | sanitize"></main>
 
-<ng-result-action></ng-result-action>
+<div class="result_action">
+    <label class="small-font">
+        <input type="checkbox" ng-model="NewPostCtrl.newPost.state">
+        Скрыть статью
+    </label>
+    <button class="btn-result" message="really add?" ng-really-click="NewPostCtrl.addPost()">Применить</button>
+    <button class="btn-result">Отменить и уйти</button>
+</div>
+
