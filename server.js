@@ -75,7 +75,7 @@ app.get('/api/anon/posts', function(req, res){
     Post
         .where('state')
         .equals('visible')
-        .sort('date')
+        .sort('-date')
         .exec(
         function(err,items){
             res.json(items);
