@@ -114,9 +114,14 @@ nav.primary{
       & a{
         color: #fff;
         padding-bottom: 10px;
-        &:hover{
+        &.link-chosen{
           border-bottom: 3px solid @link-red;
-          transition: 0.3s ease;
+        }
+        &.link-to-choose {
+          &:hover {
+            border-bottom: 3px solid @link-red;
+            transition: 0.3s ease;
+          }
         }
       }
     }
@@ -172,10 +177,8 @@ nav.pagination{
     & a{
       color:@link-red;
       &:hover{
-        &:hover{
           border-bottom: 2px solid @link-red;
           transition: 0.3s ease;
-        }
       }
     }
   }

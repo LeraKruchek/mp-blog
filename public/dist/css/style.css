@@ -125,7 +125,10 @@ nav.primary ul li a {
   color: #fff;
   padding-bottom: 10px;
 }
-nav.primary ul li a:hover {
+nav.primary ul li a.link-chosen {
+  border-bottom: 3px solid #ff6a71;
+}
+nav.primary ul li a.link-to-choose:hover {
   border-bottom: 3px solid #ff6a71;
   transition: 0.3s ease;
 }
@@ -172,7 +175,7 @@ nav.pagination a .title {
 .wrapper.admin-wrapper .exit a {
   color: #ff6a71;
 }
-.wrapper.admin-wrapper .exit a:hover:hover {
+.wrapper.admin-wrapper .exit a:hover {
   border-bottom: 2px solid #ff6a71;
   transition: 0.3s ease;
 }

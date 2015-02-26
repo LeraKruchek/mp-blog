@@ -23,13 +23,13 @@ angular.module('blog-app', ['ui.router', 'admin-app', 'confirm-app', 'blog-app.d
                 controllerAs: 'PostCtrl',
                 templateUrl: '/public/dist/templates/anon/single-post.html'
             })
-            .state('anon.login',{
+            .state('anon.login', {
                 url: '/login',
                 controller: 'LoginController',
                 controllerAs: 'LoginCtrl',
                 templateUrl: '/public/dist/templates/anon/login-page.html'
             })
-            .state('anon.archive',{
+            .state('anon.archive', {
                 url: '/archive',
                 controller: 'ArchiveController',
                 controllerAs: 'ArchiveCtrl',
@@ -59,7 +59,7 @@ angular.module('blog-app', ['ui.router', 'admin-app', 'confirm-app', 'blog-app.d
                 controllerAs:'NewPostCtrl',
                 templateUrl: '/public/dist/templates/admin/admin-new.html'
              })
-            .state('admin.edit',{
+            .state('admin.edit', {
                 url: '/admin/edit/:visible_id',
                 controller: 'EditPostController',
                 controllerAs: 'EditPostCtrl',
