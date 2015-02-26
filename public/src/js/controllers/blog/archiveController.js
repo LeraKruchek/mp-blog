@@ -10,7 +10,7 @@
         var self = this;
         self.posts = [];
         PostController.getPosts().then(function(data){
-            self.posts = data.reverse();
+            self.posts = data;
         });
     }
 
