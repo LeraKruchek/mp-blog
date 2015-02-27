@@ -27,7 +27,7 @@
 
     <label>
         Содержимое статьи (HTML)
-        <textarea ng-model="EditPostCtrl.post.output" class="contenteditable"></textarea>
+        <textarea ng-model="EditPostCtrl.post.output"  class="contenteditable"></textarea>
     </label>
 </section>
 <header ng-back-image={{EditPostCtrl.post.background}}>
@@ -50,7 +50,7 @@
     </div>
 </header>
 
-<main ng-bind-html="EditPostCtrl.post.output | sanitize"></main>
+<main ng-bind-html="EditPostCtrl.post.output | unsafe"></main>
 
 <div class="result_action">
     <label class="small-font">

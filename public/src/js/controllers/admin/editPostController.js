@@ -5,12 +5,21 @@
    angular.module('admin-app.controllers')
        .controller('EditPostController', EditPostController);
 
-    EditPostController.$inject = ['AdminPostFactory', '$stateParams', '$sanitize'];
-    function EditPostController(AdminPostFactory, $stateParams, $sanitize){
+    EditPostController.$inject = ['AdminPostFactory', '$stateParams', '$sanitize', '$sce','$filter','$parse'];
+    function EditPostController(AdminPostFactory, $stateParams, $sanitize, $sce,$filter, $parse){
         var self = this;
         var visible_id = $stateParams.visible_id;
+        self.decodeEntities = function(value) {
+            return value.
+                replace(/&amp;/g, '&').
+                replace(/&#\d+;/g, function(value) {
+                    var m = value.match(/\d+/g);
+                    return String.fromCharCode(m[0]);
+                });
+        };
         AdminPostFactory.getPost(visible_id).then(function(data){
             self.post = data[0];
+            self.post.output = self.decodeEntities(self.post.output);
             self.state = self.post.state === 'visible' ? false : true;
         });
         self.savePost = function(){

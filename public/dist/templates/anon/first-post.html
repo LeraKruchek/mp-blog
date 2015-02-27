@@ -12,13 +12,13 @@
 
             </ul>
         </nav>
-    <h1>{{FirstPostController.posts[0].title}}</h1>
-    <time class="small-font">{{FirstPostController.posts[0].date | rusDate}}</time>
-    <p>{{FirstPostController.posts[0].entry}}</p>
+    <h1 ng-bind="FirstPostController.posts[0].title"></h1>
+    <time class="small-font" ng-bind="FirstPostController.posts[0].date | rusDate" ng-show="FirstPostController.posts[0].date"></time>
+    <p ng-bind="FirstPostController.posts[0].entry"></p>
     </div>
 </header>
 
-<main ng-bind-html="FirstPostController.posts[0].output | sanitize">
+<main ng-bind-html="FirstPostController.posts[0].output | unsafe">
 </main>
 
 <nav class="pagination">

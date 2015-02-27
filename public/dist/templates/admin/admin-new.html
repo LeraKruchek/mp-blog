@@ -25,7 +25,10 @@
             <textarea ng-model="NewPostCtrl.newPost.entry"></textarea>
         </label>
     </div>
-
+    <div>
+        <button class="add-p" ng-add-p="NewPostCtrl.newPost.output">P tag</button>
+        <button class="add-img">Img tag</button>
+    </div>
     <label>
         Содержимое статьи (HTML)
         <textarea ng-model="NewPostCtrl.newPost.output" class="contenteditable"></textarea>
@@ -51,7 +54,7 @@
     </div>
 </header>
 
-<main ng-bind-html="NewPostCtrl.newPost.output | sanitize"></main>
+<main ng-bind-html="NewPostCtrl.newPost.output | unsafe"></main>
 
 <div class="result_action">
     <label class="small-font">

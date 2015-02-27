@@ -10,6 +10,7 @@
         var self = this;
         self.newPost = {};
         self.newPost.date = '';
+        self.newPost.output = '';
         self.addPost = function(){
             self.newPost.output = $sanitize(self.newPost.output);
             if (self.newPost.state){

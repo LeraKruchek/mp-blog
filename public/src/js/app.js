@@ -2,7 +2,7 @@
  * Created by Valeryia_Kruchak on 09-Feb-15.
  */
 (function() {
-angular.module('blog-app', ['ui.router', 'admin-app', 'confirm-app', 'blog-app.directives', 'blog-app.controllers'])
+angular.module('blog-app', ['ui.router', 'admin-app', 'confirm-app', 'blog-app.directives', 'blog-app.controllers', 'blog-app.filters'])
     .config(['$locationProvider', '$stateProvider', '$urlRouterProvider', function($locationProvider, $stateProvider, $urlRouterProvider){
         $locationProvider.html5Mode(true);
         $urlRouterProvider.otherwise('/');
@@ -68,9 +68,10 @@ angular.module('blog-app', ['ui.router', 'admin-app', 'confirm-app', 'blog-app.d
 
     }])
 
-    .run(['$rootScope', '$state', 'AuthService', function ($rootScope, $state, AuthService) {
+    .run(['$rootScope', '$state', 'AuthService' ,'$anchorScroll', function ($rootScope, $state, AuthService, $anchorScroll) {
 
         $rootScope.$on("$stateChangeStart", function (event, toState, toParams, fromState, fromParams) {
+            $anchorScroll();
             var user = AuthService.getInfo();
             if (toState.name === 'anon.login'){
                 if(user){

@@ -3,17 +3,22 @@
  */
 (function(){
     angular.module('admin-app.directives',[])
-        .directive('ngResultAction', ngResultAction);
+        .directive('ngAddP', ngAddP);
 
-    function ngResultAction(){
+    ngAddP.$inject = ['$sce'];
+    function ngAddP($sce){
         return{
-            restrict: 'EA',
-            templateUrl: '/public/dist/templates/partials/result-action.html',
-            replace: true
-//            link: function(scope, element, attrs, ngModel) {
-//
-//            }
-
+            restrict: 'A',
+            scope: {
+                ngAddP: '@'
+            },
+            link: function(scope, elem, attr){
+                elem.bind('click', function(){
+                    var cont = scope.ngAddP;
+                    var tag =  "<p>1</p>";
+                    scope.$apply($sce.trustAsHtml(scope.$parent.NewPostCtrl.newPost.output += tag));
+                });
+            }
 
         };
     }

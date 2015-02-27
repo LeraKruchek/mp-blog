@@ -4,7 +4,7 @@
 (function(){
     angular.module('blog-app.filters', [])
         .filter('rusDate', rusDate)
-        .filter('sanitize', sanitize);
+        .filter('unsafe', unsafe);
 
     function rusDate() {
         return function (input) {
@@ -18,8 +18,8 @@
         };
     }
 
-    sanitize.$inject = ['$sce'];
-    function sanitize($sce){
+    unsafe.$inject = ['$sce'];
+    function unsafe($sce){
         return function(input){
             return $sce.trustAsHtml(input);
         };
