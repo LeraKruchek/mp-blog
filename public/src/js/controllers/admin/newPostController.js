@@ -5,12 +5,17 @@
     angular.module('admin-app.controllers')
         .controller('NewPostController', NewPostController);
 
-    NewPostController.$inject = ['AdminPostFactory', '$state', '$sanitize'];
-    function NewPostController(AdminPostFactory, $state, $sanitize){
+    NewPostController.$inject = ['AdminPostFactory', '$state', '$sanitize', '$scope'];
+    function NewPostController(AdminPostFactory, $state, $sanitize, $scope){
         var self = this;
         self.newPost = {};
         self.newPost.date = '';
         self.newPost.output = '';
+
+        $scope.$on('modal.closed', function(){
+            $state.go('admin.archive');
+        });
+
         self.addPost = function(){
             self.newPost.output = $sanitize(self.newPost.output);
             if (self.newPost.state){
@@ -22,8 +27,6 @@
             }
             AdminPostFactory.addPost(self.newPost).then(function(data){
                 self.newPost = {};
-                console.log(data);
-                $state.go('admin.archive');
             });
         };
     }

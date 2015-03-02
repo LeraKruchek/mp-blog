@@ -24,7 +24,12 @@
             <textarea ng-model="EditPostCtrl.post.entry"></textarea>
         </label>
     </div>
-
+    <div class="pull-right">
+        <button class="add-tag" ng-add-tag="p" output="EditPostCtrl.post.output">P tag</button>
+        <button class="add-tag"  ng-add-tag="img" output="EditPostCtrl.post.output">Img tag</button>
+        <button class="add-tag"  ng-add-tag="figcaption" output="EditPostCtrl.post.output">Figcaption tag</button>
+        <button class="add-tag"  ng-add-tag="a" output="EditPostCtrl.post.output">A tag</button>
+    </div>
     <label>
         Содержимое статьи (HTML)
         <textarea ng-model="EditPostCtrl.post.output"  class="contenteditable"></textarea>
@@ -36,17 +41,17 @@
         <nav class="primary">
             <ul>
                 <li>
-                    <a ng-href="#">Архив</a>
+                    <a>Архив</a>
                 </li>
                 <li>
-                    <a ng-href="#">Инфо</a>
+                    <a>Инфо</a>
                 </li>
 
             </ul>
         </nav>
-        <h1>{{EditPostCtrl.post.title}}</h1>
-        <time class="small-font" >{{EditPostCtrl.post.date | rusDate}}</time>
-        <p>{{EditPostCtrl.post.entry}}</p>
+        <h1 ng-bind="EditPostCtrl.post.title"></h1>
+        <time class="small-font" ng-bind="EditPostCtrl.post.date | rusDate" ng-show="EditPostCtrl.post.date"></time>
+        <p ng-bind="EditPostCtrl.post.entry"></p>
     </div>
 </header>
 
@@ -57,7 +62,7 @@
         <input type="checkbox" ng-model="EditPostCtrl.state">
         Скрыть статью
     </label>
-    <button class="btn-result" message="really save?" ng-really-click="EditPostCtrl.savePost()">Применить</button>
-    <button class="btn-result">Отменить и уйти</button>
+    <button class="btn-result" message="Сохранить изменения?" title={{EditPostCtrl.post.title}} ng-really-click="EditPostCtrl.savePost()">Применить</button>
+    <button class="btn-result" ui-sref="admin.archive">Отменить и уйти</button>
 </div>
 

@@ -4,7 +4,9 @@
 }
 
 @link-red: #ff6a71;
-
+button{
+  cursor: pointer;
+}
 .clearfix{
   &:before,
   &:after {
@@ -28,6 +30,12 @@
   font-family: 'pt sans';
   font-size: 14px;
   color: #abacae;
+}
+.simple-link{
+  color:@link-red;
+  &:hover{
+    border-bottom: 2px solid @link-red;
+  }
 }
 a{
   text-decoration: none !important;
@@ -71,6 +79,9 @@ header {
 main{
   width: 960px;
   margin: 60px auto 0;
+  & a{
+    .simple-link;
+  }
   & p{
     word-wrap: break-word;
     width: 800px;
@@ -83,6 +94,7 @@ main{
   & img{
     display: block;
     .center_h;
+    width: 960px;
   }
   & img + img, & img + figcaption{
       margin-top: 20px;
@@ -113,7 +125,7 @@ nav.primary{
       margin-left: 50px;
       & a{
         color: #fff;
-        padding-bottom: 10px;
+        padding-bottom: 5px;
         &.link-chosen{
           border-bottom: 3px solid @link-red;
         }
@@ -126,13 +138,18 @@ nav.primary{
       }
     }
   }
+  &.archive{
+      margin-top: 70px;
+      & a{
+        color: #2e3039;
+      }
+  }
 }
 
 nav.pagination{
-  margin: 100px 0;
+  margin-top: 100px;
   padding: 29px 0 109px;
   border-top: 1px dashed #82838e;
-  border-bottom: 1px solid black;
   & .circle{
     display: block;
     background-color: #f2f3f5;
@@ -160,29 +177,11 @@ nav.pagination{
   }
 }
 
+
 .wrapper.admin-wrapper{
-  & nav.primary{
-    margin-top: 70px;
-    & a{
-      color: #2e3039;
-
-    }
-  }
-  & .logo{
-//    margin-bottom: 30px;
-  }
   & .exit{
-//    margin-bottom: 30px;
     display: inline-block;
-    & a{
-      color:@link-red;
-      &:hover{
-          border-bottom: 2px solid @link-red;
-          transition: 0.3s ease;
-      }
-    }
   }
-
 }
 div.archive-posts {
   display: flex;
@@ -365,6 +364,9 @@ section.login {
   form {
     width: 460px;
     .center_h;
+    &[name='postForm']{
+      width: auto;
+    }
   }
   input, textarea{
       outline-color: @link-red;
@@ -384,6 +386,9 @@ section.login {
         margin: 50px auto 0;
         font-family: 'pt sans';
         font-size: 18px;
+      }
+      &:focus{
+        border: none;
       }
 
   }
@@ -417,7 +422,6 @@ section.editor{
 
 .result_action{
   text-align: center;
-  color: #2e3039;
   margin-top: 200px;
   height: 200px;
   background-color: #f2f3f5;
@@ -433,13 +437,12 @@ section.editor{
       margin: 0;
     }
   }
-  & button{
-    border: 2px solid #d5d6d9;
-  }
+//  & button{
+//    border: 2px solid #d5d6d9;
+//  }
 }
 
-.btn-result{
-  border: 2px solid #aaabaf;
+.btn-result {
   width: 180px;
   font-family: 'pt sans';
   font-size: 18px;
@@ -447,10 +450,21 @@ section.editor{
   height: 50px;
   margin-right: 20px;
   background: none;
-  &:hover{
+  color: #fff;
+  border: none;
+  &.btn-ok {
     background-color: @link-red;
-    border: none;
-    color: #fff;
+    &:hover {
+      background-color: #ff767d;
+      border: none;
+    }
+  }
+  &.btn-cnl {
+    color: #2e3039;
+    border: 2px solid #d5d6d9;
+    &:hover {
+      background-color: rgba(255,255,255,.5);
+    }
   }
 }
 
@@ -471,9 +485,9 @@ section.editor{
 }
 
 .modal.fade .modal-dialog {
-  -webkit-transform: translate(0, -25%);
-  -ms-transform: translate(0, -25%);
-  transform: translate(0, -25%);
+  -webkit-transform: translate(0, -250%);
+  -ms-transform: translate(0, -250%);
+  transform: translate(0, -250%);
   -webkit-transition: -webkit-transform 0.3s ease;
   -moz-transition: -moz-transform 0.3s ease;
   -o-transition: -o-transform 0.3s ease;
@@ -481,15 +495,16 @@ section.editor{
 }
 
 .modal.in .modal-dialog {
-  -webkit-transform: translate(0, 150%);
-  -ms-transform: translate(0, 150%);
-  transform: translate(0, 150%);
+  -webkit-transform: translate(0, 70%);
+  -ms-transform: translate(0, -70%);
+  transform: translate(0, -70%);
 }
 
 .modal-dialog {
-  position: relative;
+  top: 50%;
+  position: absolute;
   z-index: 1050;
-  width: auto;
+  width: 100%;
   margin: 10px;
 }
 
@@ -517,6 +532,10 @@ section.editor{
   font-family: 'pt sans caption';
   font-size: 48px;
   text-align: center;
+  & p{
+    margin-top: 10px;
+    font-size: 24px;
+  }
 }
 
 .modal-footer {

@@ -5,10 +5,21 @@
    angular.module('admin-app.controllers')
        .controller('EditPostController', EditPostController);
 
-    EditPostController.$inject = ['AdminPostFactory', '$stateParams', '$sanitize', '$sce','$filter','$parse'];
-    function EditPostController(AdminPostFactory, $stateParams, $sanitize, $sce,$filter, $parse){
+    EditPostController.$inject = ['AdminPostFactory', '$stateParams', '$state', '$sanitize', '$scope'];
+    function EditPostController(AdminPostFactory, $stateParams, $state, $sanitize, $scope){
         var self = this;
         var visible_id = $stateParams.visible_id;
+
+        $scope.$on('modal.closed', function(){
+            $state.go('admin.archive');
+        });
+
+        AdminPostFactory.getPost(visible_id).then(function(data){
+            self.post = data[0];
+            self.post.output = self.decodeEntities(self.post.output);
+            self.state = self.post.state === 'visible' ? false : true;
+        });
+
         self.decodeEntities = function(value) {
             return value.
                 replace(/&amp;/g, '&').
@@ -17,11 +28,7 @@
                     return String.fromCharCode(m[0]);
                 });
         };
-        AdminPostFactory.getPost(visible_id).then(function(data){
-            self.post = data[0];
-            self.post.output = self.decodeEntities(self.post.output);
-            self.state = self.post.state === 'visible' ? false : true;
-        });
+
         self.savePost = function(){
             self.post.output = $sanitize(self.post.output);
             if (self.state){
@@ -31,8 +38,9 @@
                 self.post.state = 'visible';
             }
             AdminPostFactory.savePost(self.post._id, self.post).then(function(data){
-                console.log(data);
             });
         };
+
+
     }
 })();

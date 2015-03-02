@@ -34,6 +34,11 @@ angular.module('blog-app', ['ui.router', 'admin-app', 'confirm-app', 'blog-app.d
                 controller: 'ArchiveController',
                 controllerAs: 'ArchiveCtrl',
                 templateUrl: '/public/dist/templates/anon/archive-page.html'
+            })
+            .state('anon.info', {
+                url: '/about',
+                controller: '',
+                templateUrl: '/public/dist/templates/anon/info-page.html'
             });
 
             $stateProvider

@@ -1,38 +1,43 @@
 
 <section class="editor small-font" >
     <h1>Добавить новую статью</h1>
+    <form name="postForm">
     <div class="half pull-left">
         <label>
             Ссылка на главное изображение
-            <input type="text" ng-model="NewPostCtrl.newPost.background">
+            <input type="text" ng-model="NewPostCtrl.newPost.background" required>
         </label>
         <label>
             Название статьи
-            <input type="text" ng-model="NewPostCtrl.newPost.title">
+            <input type="text" ng-model="NewPostCtrl.newPost.title" required>
         </label>
         <label>
             ID статьи в адресной строке
-            <input type="text" ng-model="NewPostCtrl.newPost.visible_id">
+            <input type="text" ng-model="NewPostCtrl.newPost.visible_id" required>
         </label>
     </div>
     <div class="half pull-right">
         <label>
             Ссылка на изображение в архиве (миниатюра)
-            <input type="text" ng-model="NewPostCtrl.newPost.miniature">
+            <input type="text" ng-model="NewPostCtrl.newPost.miniature" required>
         </label>
         <label>
             Вводный текст
-            <textarea ng-model="NewPostCtrl.newPost.entry"></textarea>
+            <textarea ng-model="NewPostCtrl.newPost.entry" required></textarea>
         </label>
     </div>
-    <div>
-        <button class="add-p" ng-add-p="NewPostCtrl.newPost.output">P tag</button>
-        <button class="add-img">Img tag</button>
+
+    <div class="pull-right">
+        <button class="add-tag" ng-add-tag="p" output="NewPostCtrl.newPost.output">P tag</button>
+        <button class="add-tag"  ng-add-tag="img" output="NewPostCtrl.newPost.output">Img tag</button>
+        <button class="add-tag"  ng-add-tag="figcaption" output="NewPostCtrl.newPost.output">Figcaption tag</button>
+        <button class="add-tag"  ng-add-tag="a" output="NewPostCtrl.newPost.output">A tag</button>
     </div>
     <label>
         Содержимое статьи (HTML)
-        <textarea ng-model="NewPostCtrl.newPost.output" class="contenteditable"></textarea>
+        <textarea ng-model="NewPostCtrl.newPost.output" class="contenteditable" required></textarea>
     </label>
+    </form>
 </section>
 <header ng-back-image={{NewPostCtrl.newPost.background}}>
     <div class="wrapper">
@@ -40,17 +45,17 @@
         <nav class="primary">
             <ul>
                 <li>
-                    <a ng-href="#">Архив</a>
+                    <a>Архив</a>
                 </li>
                 <li>
-                    <a ng-href="#">Инфо</a>
+                    <a>Инфо</a>
                 </li>
 
             </ul>
         </nav>
-        <h1>{{NewPostCtrl.newPost.title}}</h1>
-        <time class="small-font" >{{NewPostCtrl.newPost.date | rusDate}}</time>
-        <p>{{NewPostCtrl.newPost.entry}}</p>
+        <h1 ng-bind="NewPostCtrl.newPost.title"></h1>
+        <time class="small-font" ng-bing="NewPostCtrl.newPost.date | rusDate" ng-show="NewPostCtrl.newPost.date"></time>
+        <p ng-bind="NewPostCtrl.newPost.entry"></p>
     </div>
 </header>
 
@@ -61,7 +66,7 @@
         <input type="checkbox" ng-model="NewPostCtrl.newPost.state">
         Скрыть статью
     </label>
-    <button class="btn-result" message="really add?" ng-really-click="NewPostCtrl.addPost()">Применить</button>
-    <button class="btn-result">Отменить и уйти</button>
+    <button class="btn-result btn-ok" ng-disabled="postForm.$invalid" message="Опубликовать на сайте?" title={{NewPostCtrl.newPost.title}} ng-really-click="NewPostCtrl.addPost()">Применить</button>
+    <button class="btn-result btn-cnl">Отменить и уйти</button>
 </div>
 

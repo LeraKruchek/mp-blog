@@ -26,8 +26,9 @@ angular.module('confirm-app', ['ui.bootstrap'])
             link: function(scope, element, attrs){
                 element.bind('click', function(){
                     var message = attrs.message;
-                    var template = '<div class="modal-body">' + message + '</div>';
-                    template += '<div class="modal-footer"><button class=\"btn-result\" ng-click="ok()">OK</button><button class=\"btn-result\" ng-click="cancel()">Cancel</button></div>';
+                    var title = attrs.title || '';
+                    var template = '<div class="modal-body">' + message + '</br>' + '<p>' + title + '</p>' + '</div>';
+                    template += '<div class="modal-footer"><button class=\"btn-result btn-ok\" ng-click="ok()">OK</button><button class=\"btn-result btn-cnl\" ng-click="cancel()">Cancel</button></div>';
 
                     var modalInstance = $modal.open({
                         template: template,
@@ -36,8 +37,9 @@ angular.module('confirm-app', ['ui.bootstrap'])
 
                     modalInstance.result.then(function() {
                         scope.ngReallyClick();
+                        scope.$emit('modal.closed');
                     }, function() {
-                        //Modal dismissed
+
                     });
                 });
 

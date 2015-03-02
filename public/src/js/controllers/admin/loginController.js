@@ -21,7 +21,5 @@
             AuthService.logout();
             $state.go('anon.login');
         };
-
     }
-
 })();

@@ -17,10 +17,6 @@
                 self.posts.splice(ind,1);
             });
         };
-        self.hi = function(item){
-            console.log(item);
-        };
-
     }
 
 })();
