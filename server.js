@@ -41,33 +41,26 @@ var CredentialSchema = new mongoose.Schema({
 
 var Credential = mongoose.model('credentials', CredentialSchema);
 
+var InfoSchema = new mongoose.Schema({
+    output: { type : String}
+});
+
+var Info = mongoose.model('infos', InfoSchema);
+
 var tokens = [];
 
 function requiresAuthentication(request, response, next) {
-//    console.log(request.headers);
     if (request.headers.access_token) {
         var token = request.headers.access_token;
-//        if (tokens.indexOf(token) > -1) {
             var decodedToken = jwt.decode(token, app.get('jwtTokenSecret'));
             if (new Date(decodedToken.expires) > new Date()) {
                 next();
                 return;
             } else {
-//                removeFromTokens();
                 response.send(401, "Your session has expired");
             }
-//        }
     }
     response.send(401, "You don't have access");
-}
-
-function removeFromTokens(token) {
-    for (var counter = 0; counter < tokens.length; counter++) {
-        if (tokens[counter] === token) {
-            tokens.splice(counter, 1);
-            break;
-        }
-    }
 }
 
 app.get('/api/anon/posts', function(req, res){
@@ -80,6 +73,15 @@ app.get('/api/anon/posts', function(req, res){
         function(err,items){
             res.json(items);
         })
+});
+
+app.get('/api/anon/info', function(req, res){
+    mongoose.set('debug', true);
+    Info.find()
+        .exec(function(err, data){
+            res.json(data);
+        });
+
 });
 
 app.post('/api/login', function(req, res){
@@ -182,6 +184,16 @@ app.get('/api/admin/post/:visible_id', function(req, res){
            res.json(data);
        })
 });
+
+
+app.get('/api/admin/info', function(req, res){
+    Info.find()
+        .exec(function(err, data){
+            res.json(data);
+        })
+});
+
+
 
 app.get('*', function(req, res) {
     res.sendfile('./public/views/index.html');

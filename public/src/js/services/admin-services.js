@@ -4,7 +4,8 @@
 (function(){
     angular.module('admin-app.services', [])
         .factory('AuthService', AuthService)
-        .factory('AdminPostFactory', AdminPostFactory);
+        .factory('AdminPostFactory', AdminPostFactory)
+        .factory('AdminInfoFactory', AdminInfoFactory);
 
     AuthService.$inject = ['$http', '$q', '$window'];
     function AuthService($http, $q, $window){
@@ -118,9 +119,32 @@
             return d5.promise;
         };
 
-
-
-
         return adminPostFactory;
+    }
+
+
+    AdminInfoFactory.$inject = ['$http', '$q', 'AuthService'];
+    function AdminInfoFactory($http, $q, AuthService) {
+        var adminInfoFactory = {};
+        var userInfo = AuthService.getInfo();
+        $http.defaults.headers.get = { "access_token": userInfo.accessToken };
+        $http.defaults.headers.put = { "access_token": userInfo.accessToken };
+        $http.defaults.headers.get["Content-Type"] = "application/json";
+        $http.defaults.headers.put["Content-Type"] = "application/json";
+
+        adminInfoFactory.getInfo = function(){
+            var d1 = $q.defer();
+            $http.get('/api/admin/info')
+                .success(function(data){
+                    d1.resolve(data);
+                })
+                .error(function(){
+                    d1.reject();
+                });
+            return d1.promise;
+        };
+
+        return adminInfoFactory;
+
     }
 })();

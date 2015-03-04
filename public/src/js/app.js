@@ -2,7 +2,8 @@
  * Created by Valeryia_Kruchak on 09-Feb-15.
  */
 (function() {
-angular.module('blog-app', ['ui.router', 'admin-app', 'confirm-app', 'blog-app.directives', 'blog-app.controllers', 'blog-app.filters'])
+angular.module('blog-app', ['ui.router', 'admin-app', 'confirm-app', 'blog-app.directives',
+    'blog-app.controllers', 'blog-app.filters', 'blog-app.services'])
     .config(['$locationProvider', '$stateProvider', '$urlRouterProvider', function($locationProvider, $stateProvider, $urlRouterProvider){
         $locationProvider.html5Mode(true);
         $urlRouterProvider.otherwise('/');
@@ -37,7 +38,8 @@ angular.module('blog-app', ['ui.router', 'admin-app', 'confirm-app', 'blog-app.d
             })
             .state('anon.info', {
                 url: '/about',
-                controller: '',
+                controller: 'InfoController',
+                controllerAs: 'InfoCtrl',
                 templateUrl: '/public/dist/templates/anon/info-page.html'
             });
 
@@ -69,6 +71,12 @@ angular.module('blog-app', ['ui.router', 'admin-app', 'confirm-app', 'blog-app.d
                 controller: 'EditPostController',
                 controllerAs: 'EditPostCtrl',
                 templateUrl: '/public/dist/templates/admin/admin-edit.html'
+            })
+            .state('admin.edit-info',{
+                url: '/admin/info',
+                controller: 'EditInfoController',
+                controllerAs: 'EditInfoCtrl',
+                templateUrl: 'public/dist/templates/admin/admin-edit-info.html'
             });
 
     }])

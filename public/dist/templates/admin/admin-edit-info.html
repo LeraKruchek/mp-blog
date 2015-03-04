@@ -2,14 +2,19 @@
     <h1>Редактирование инфо</h1>
     <form name="postForm">
         <div class="pull-right">
-            <button class="add-tag" ng-add-tag="p" output="EditPostCtrl.post.output">P tag</button>
-            <button class="add-tag"  ng-add-tag="img" output="EditPostCtrl.post.output">Img tag</button>
-            <button class="add-tag"  ng-add-tag="figcaption" output="EditPostCtrl.post.output">Figcaption tag</button>
-            <button class="add-tag"  ng-add-tag="a" output="EditPostCtrl.post.output">A tag</button>
+            <button class="add-tag" ng-add-tag="p" output="EditInfoCtrl.info">P tag</button>
+            <button class="add-tag"  ng-add-tag="img" output="EditInfoCtrl.info">Img tag</button>
+            <button class="add-tag"  ng-add-tag="figcaption" output="EditInfoCtrl.info">Figcaption tag</button>
+            <button class="add-tag"  ng-add-tag="a" output="EditInfoCtrl.info">A tag</button>
         </div>
         <label>
             Содержимое (HTML)
-            <textarea ng-model="EditPostCtrl.post.output"  class="contenteditable"></textarea>
+            <textarea ng-model="EditInfoCtrl.info"  class="contenteditable"></textarea>
         </label>
     </form>
 </section>
+        <main ng-bind-html="EditInfoCtrl.info | unsafe"></main>
+<div class="result_action">
+    <button class="btn-result btn-ok" ng-disabled="postForm.$invalid" message="Сохранить изменения?" ng-really-click="EditInfoCtrl.saveInfo()">Применить</button>
+    <button class="btn-result btn-cnl" ui-sref="admin.archive">Отменить и уйти</button>
+</div>

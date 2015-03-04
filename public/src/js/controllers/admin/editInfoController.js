@@ -3,10 +3,14 @@
  */
 (function(){
     angular.module('admin-app.controllers')
-        .controller('editInfoController', editInfoController);
+        .controller('EditInfoController', EditInfoController);
 
-    function editInfoController(){
+    EditInfoController.$inject = ['AdminInfoFactory'];
+    function EditInfoController(AdminInfoFactory){
         var self = this;
-        self.info.output = '';
+        self.info = '';
+        AdminInfoFactory.getInfo().then(function(data){
+            self.info = data[0].output;
+        });
     }
 })();
