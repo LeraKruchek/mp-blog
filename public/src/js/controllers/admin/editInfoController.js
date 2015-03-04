@@ -8,9 +8,15 @@
     EditInfoController.$inject = ['AdminInfoFactory'];
     function EditInfoController(AdminInfoFactory){
         var self = this;
-        self.info = '';
+        self.info = {};
+        self.info.output = '';
         AdminInfoFactory.getInfo().then(function(data){
-            self.info = data[0].output;
+            self.info = data[0];
         });
+        self.saveInfo = function(){
+            AdminInfoFactory.saveInfo(self.info).then(function(data){
+                console.log(data);
+            });
+        };
     }
 })();

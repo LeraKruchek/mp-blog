@@ -30,7 +30,7 @@
                             break;
                     }
                      scope.output = value.slice(0, pos) + tag + value.slice(pos, value.length);
-                     scope.$apply($sce.trustAsHtml(scope.output));
+//                     scope.$apply($sce.trustAsHtml(scope.output));
                 });
             }
 

@@ -144,6 +144,18 @@
             return d1.promise;
         };
 
+        adminInfoFactory.saveInfo = function(info){
+            var d2 = $q.defer();
+            $http.put('/api/admin/info', info)
+                .success(function(data){
+                    d2.resolve(data);
+                })
+                .error(function(){
+                    d2.reject();
+                });
+            return d2.promise;
+        };
+
         return adminInfoFactory;
 
     }

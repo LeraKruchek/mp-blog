@@ -193,6 +193,22 @@ app.get('/api/admin/info', function(req, res){
         })
 });
 
+app.put('/api/admin/info', function(req, res){
+   Info.update(
+   {
+       _id : req.body.id
+   },
+       {
+         $set:{
+             output: req.body.output
+         }
+       },
+
+        function(err, info){
+            res.json(info);
+        })
+});
+
 
 
 app.get('*', function(req, res) {
