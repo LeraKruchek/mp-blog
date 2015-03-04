@@ -7,19 +7,6 @@
 
     ngAddTag.$inject = ['$sce'];
     function ngAddTag($sce){
-
-        function getCaret(elem){
-            var offset = 0;
-            if (elem !== null){
-                if (elem.createTextRange){
-                    var range = elem.createTextRange();
-                    range.moveStart('character', -elem.value.length);
-                    offset = range.text.length;
-                }
-            }
-            return offset;
-        }
-
         return{
             restrict: 'A',
             scope: {
@@ -28,9 +15,9 @@
             },
             link: function(scope, elem, attr){
                 elem.bind('click', function(){
-//                    var tag = (scope.output === '') ? '' : '\n';
                     var tag = '';
                     var el = document.getElementsByClassName("contenteditable");
+                    var value = el[0].value;
                     var pos = el[0].selectionStart;
                     switch (scope.ngAddTag){
                         case 'p': tag += '<p></p>';
@@ -42,13 +29,12 @@
                         case 'a': tag += '<a href=""></a>';
                             break;
                     }
-                    scope.output = scope.output.slice(0, pos) + tag + scope.output.slice(pos, scope.output.length);
-                    scope.$apply($sce.trustAsHtml(scope.output));
+                     scope.output = value.slice(0, pos) + tag + value.slice(pos, value.length);
+                     scope.$apply($sce.trustAsHtml(scope.output));
                 });
             }
 
         };
     }
-
 
 })();

@@ -23,7 +23,7 @@
 <nav class="pagination">
     <div class="wrapper">
         <a class="pull-left" ng-show="PostCtrl.previousPost"  ng-href="/articles/{{PostCtrl.previousPost.visible_id}}">
-        <div class="circle pull-left"><-</div>
+        <div class="circle pull-left"></div>
         <div class="pull-left next-text">
             <p class="small-font">Предыдущая запись</p>
             <p class="title">{{PostCtrl.previousPost.title}}</p>
@@ -31,7 +31,7 @@
         </a>
 
         <a class="pull-right" ng-show="PostCtrl.nextPost" ng-href="/articles/{{PostCtrl.nextPost.visible_id}}">
-            <div class="circle pull-right">-></div>
+            <div class="circle pull-right"></div>
             <div class="pull-right next-text">
                 <p class="small-font">Следующая запись</p>
                 <p class="title">{{PostCtrl.nextPost.title}}</p>

@@ -20,6 +20,12 @@ button{
 .center_h{
   margin: 0 auto;
 }
+.center_abs{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
 .pull-left{
   float: left;
 }
@@ -77,6 +83,7 @@ header {
    }
 
 main{
+  white-space:pre;
   width: 960px;
   margin: 60px auto 0;
   & a{
@@ -148,11 +155,11 @@ nav.primary{
 
 nav.pagination{
   margin-top: 100px;
-  padding: 29px 0 109px;
-  border-top: 1px dashed #82838e;
+  padding: 30px 0 110px;
+  background: url(/public/dist/images/dots_line.png) repeat-x ;
+
   & .circle{
     display: block;
-    background-color: #f2f3f5;
     border-radius: 50%;
     width: 48px;
     height: 48px;
@@ -161,6 +168,17 @@ nav.pagination{
   }
   & a{
     text-decoration: none;
+    &:hover{
+      .circle.pull-left, .circle.pull-right{
+        background-color: #edeef0;
+      }
+    }
+    & .circle.pull-left{
+      background: #f2f3f5 url(/public/dist/images/arrow_left.png) no-repeat 50%;
+    }
+    & .circle.pull-right{
+      background: #f2f3f5 url(/public/dist/images/arrow_right.png) no-repeat 50%;
+    }
     & .pull-left.next-text{
       text-align: left;
       margin-left: 10px;
@@ -248,7 +266,6 @@ div.archive-posts {
 }
 .item {
   margin-bottom: 50px;
-  cursor: pointer;
   &:nth-child(3n + 2) {
     margin: 0 30px 50px;
   }
@@ -356,9 +373,11 @@ div.archive-posts {
 
 
 section.login {
+  .center_abs();
+
   & img {
     display: block;
-    margin: 210px auto 50px;
+    margin: 0 auto 50px;
   }
 }
   form {
@@ -369,7 +388,7 @@ section.login {
     }
   }
   input, textarea{
-      outline-color: @link-red;
+      outline: none;
       box-sizing: border-box;
       display: block;
       width: 460px;
@@ -388,7 +407,7 @@ section.login {
         font-size: 18px;
       }
       &:focus{
-        border: none;
+        border: 2px solid @link-red;
       }
 
   }
@@ -437,9 +456,6 @@ section.editor{
       margin: 0;
     }
   }
-//  & button{
-//    border: 2px solid #d5d6d9;
-//  }
 }
 
 .btn-result {

@@ -1,5 +1,6 @@
 <section class="editor small-font" >
     <h1>Редактирование статьи</h1>
+    <form name="postForm">
     <div class="half pull-left">
         <label>
             Ссылка на главное изображение
@@ -34,6 +35,7 @@
         Содержимое статьи (HTML)
         <textarea ng-model="EditPostCtrl.post.output"  class="contenteditable"></textarea>
     </label>
+    </form>
 </section>
 <header ng-back-image={{EditPostCtrl.post.background}}>
     <div class="wrapper">
@@ -62,7 +64,7 @@
         <input type="checkbox" ng-model="EditPostCtrl.state">
         Скрыть статью
     </label>
-    <button class="btn-result" message="Сохранить изменения?" title={{EditPostCtrl.post.title}} ng-really-click="EditPostCtrl.savePost()">Применить</button>
-    <button class="btn-result" ui-sref="admin.archive">Отменить и уйти</button>
+    <button class="btn-result btn-ok" ng-disabled="postForm.$invalid" message="Сохранить изменения?" title={{EditPostCtrl.post.title}} ng-really-click="EditPostCtrl.savePost()">Применить</button>
+    <button class="btn-result btn-cnl" ui-sref="admin.archive">Отменить и уйти</button>
 </div>
 

@@ -12,11 +12,11 @@
         </ul>
     </nav>
     <div class="archive-posts">
-        <a ng-href="/articles/{{post.visible_id}}" class="item" ng-repeat="post in ArchiveCtrl.posts">
-            <div class="post-image" ng-back-image="{{post.miniature}}" >
-            </div>
+        <div  class="item" ng-repeat="post in ArchiveCtrl.posts">
+            <a ng-href="/articles/{{post.visible_id}}" class="post-image" ng-back-image="{{post.miniature}}" >
+            </a>
             <p class="title">{{post.title}}</p>
             <p class="small-font">{{post.date | rusDate}}</p>
-        </a>
+        </div>
     </div>
 </div>
