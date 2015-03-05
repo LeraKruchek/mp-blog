@@ -59,7 +59,7 @@
     </div>
 </header>
 
-<main ng-bind-html="NewPostCtrl.newPost.output | unsafe"></main>
+<main ng-bind-html="NewPostCtrl.newPost.output | deleteCR | unsafe"></main>
 
 <div class="result_action">
     <label class="small-font">

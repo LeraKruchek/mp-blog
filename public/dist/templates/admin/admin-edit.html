@@ -37,7 +37,7 @@
     </label>
     </form>
 </section>
-<header ng-back-image={{EditPostCtrl.post.background}}>
+<header ng-back-image-overlay={{EditPostCtrl.post.background}}>
     <div class="wrapper">
         <img class="logo" src="/public/dist/images/logo.png">
         <nav class="primary">
@@ -57,7 +57,7 @@
     </div>
 </header>
 
-<main ng-bind-html="EditPostCtrl.post.output | unsafe"></main>
+<main ng-bind-html="EditPostCtrl.post.output | deleteCR | unsafe"></main>
 
 <div class="result_action">
     <label class="small-font">

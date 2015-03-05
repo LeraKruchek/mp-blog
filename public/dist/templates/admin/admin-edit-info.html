@@ -13,7 +13,7 @@
         </label>
     </form>
 </section>
-        <main ng-bind-html="EditInfoCtrl.info.output | unsafe"></main>
+        <main ng-bind-html="EditInfoCtrl.info.output | deleteCR | unsafe"></main>
 <div class="result_action">
     <button class="btn-result btn-ok" ng-disabled="postForm.$invalid" message="Сохранить изменения?" ng-really-click="EditInfoCtrl.saveInfo()">Применить</button>
     <button class="btn-result btn-cnl" ui-sref="admin.archive">Отменить и уйти</button>

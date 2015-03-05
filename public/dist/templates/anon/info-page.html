@@ -1,5 +1,5 @@
 <div class="wrapper">
-    <img class="logo" src="/public/dist/images/logo-admin.png">
+    <go-home></go-home>
     <nav class="primary archive">
         <ul>
             <li>
@@ -11,5 +11,5 @@
         </ul>
     </nav>
 </div>
-<main ng-bind-html="InfoCtrl.info | unsafe">
+<main ng-bind-html="InfoCtrl.info | deleteCR | unsafe">
 </main>

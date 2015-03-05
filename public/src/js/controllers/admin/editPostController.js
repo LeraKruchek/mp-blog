@@ -35,6 +35,9 @@
                 self.post.state = 'hidden';
             }
             else{
+                if(self.post.state === 'draft'){
+                    self.post.date = new Date();
+                }
                 self.post.state = 'visible';
             }
             AdminPostFactory.savePost(self.post._id, self.post).then(function(data){

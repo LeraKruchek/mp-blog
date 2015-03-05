@@ -1,6 +1,6 @@
 <header ng-back-image-overlay={{PostCtrl.currentPost.background}}>
     <div class="wrapper">
-        <img class="logo" src="/public/dist/images/logo.png">
+        <go-home></go-home>
         <nav class="primary">
             <ul>
                 <li>
@@ -17,7 +17,7 @@
     </div>
 </header>
 
-<main ng-bind-html="PostCtrl.currentPost.output | unsafe">
+<main ng-bind-html="PostCtrl.currentPost.output | deleteCR | unsafe">
 </main>
 
 <nav class="pagination">

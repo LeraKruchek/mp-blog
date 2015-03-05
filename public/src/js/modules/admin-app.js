@@ -3,5 +3,5 @@
  */
 (function(){
     angular.module('admin-app', ['admin-app.controllers', 'admin-app.directives', 'admin-app.services',
-        'confirm-app', 'ngSanitize']);
+        'admin-app.filters', 'confirm-app', 'ngSanitize']);
 })();

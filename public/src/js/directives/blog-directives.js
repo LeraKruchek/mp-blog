@@ -5,7 +5,7 @@
     angular.module('blog-app.directives', [])
         .directive('ngBackImage', ngBackImage)
         .directive('ngBackImageOverlay', ngBackImageOverlay)
-        .directive('navPrimary', navPrimary);
+        .directive('goHome', goHome);
 
     function ngBackImageOverlay() {
         return{
@@ -43,11 +43,11 @@
         };
     }
 
-    function navPrimary(){
+    function goHome(){
         return{
             restrict: 'E',
             replace: true,
-            templateUrl: '/public/dist/templates/partials/nav-primary.html'
+            template: '<a ui-sref="anon.firstPost"><img class="logo" src="/public/dist/images/logo.png"></a>'
         };
     }
 
