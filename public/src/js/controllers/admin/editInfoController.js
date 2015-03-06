@@ -5,9 +5,14 @@
     angular.module('admin-app.controllers')
         .controller('EditInfoController', EditInfoController);
 
-    EditInfoController.$inject = ['AdminInfoFactory'];
-    function EditInfoController(AdminInfoFactory){
+    EditInfoController.$inject = ['AdminInfoFactory', '$scope', '$state'];
+    function EditInfoController(AdminInfoFactory, $scope, $state){
         var self = this;
+
+        $scope.$on('modal.closed', function(){
+            $state.go('admin.archive');
+        });
+
         self.info = {};
         self.info.output = '';
         AdminInfoFactory.getInfo().then(function(data){

@@ -52,15 +52,18 @@ var tokens = [];
 function requiresAuthentication(request, response, next) {
     if (request.headers.access_token) {
         var token = request.headers.access_token;
+//        if (tokens.indexOf(token) == -1){
+//            response.send(401);
+//        }
             var decodedToken = jwt.decode(token, app.get('jwtTokenSecret'));
             if (new Date(decodedToken.expires) > new Date()) {
                 next();
                 return;
             } else {
-                response.send(401, "Your session has expired");
+                response.send(401);
             }
     }
-    response.send(401, "You don't have access");
+    response.send(401);
 }
 
 app.get('/api/anon/posts', function(req, res){

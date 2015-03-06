@@ -154,9 +154,6 @@ nav.primary ul li a.link-to-choose:hover {
   border-bottom: 3px solid #ff6a71;
   transition: 0.3s ease;
 }
-nav.primary.archive {
-  margin-top: 70px;
-}
 nav.primary.archive a {
   color: #2e3039;
 }
@@ -413,7 +410,7 @@ section.editor textarea {
 }
 section.editor textarea.contenteditable {
   width: 960px;
-  margin: 0 auto 50px;
+  margin: 5px auto 50px;
   height: 300px;
   padding: 20px;
 }

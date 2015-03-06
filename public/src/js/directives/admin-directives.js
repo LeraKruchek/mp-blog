@@ -16,9 +16,9 @@
             link: function(scope, elem, attr){
                 elem.bind('click', function(){
                     var tag = '';
-                    var el = document.getElementsByClassName("contenteditable");
-                    var value = el[0].value;
-                    var pos = el[0].selectionStart;
+                    var el = document.getElementsByClassName("contenteditable")[0];
+                    var value = el.value;
+                    var pos = el.selectionStart;
                     switch (scope.ngAddTag){
                         case 'p': tag += '<p></p>';
                             break;
@@ -30,6 +30,8 @@
                             break;
                     }
                      scope.output = value.slice(0, pos) + tag + value.slice(pos, value.length);
+//                    el.focus();
+//                    el.select();
 //                     scope.$apply($sce.trustAsHtml(scope.output));
                 });
             }

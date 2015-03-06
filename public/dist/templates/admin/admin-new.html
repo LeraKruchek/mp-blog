@@ -5,25 +5,25 @@
     <div class="half pull-left">
         <label>
             Ссылка на главное изображение
-            <input type="text" ng-model="NewPostCtrl.newPost.background" required>
+            <input type="text" ng-model="NewPostCtrl.newPost.background">
         </label>
         <label>
             Название статьи
-            <input type="text" ng-model="NewPostCtrl.newPost.title" required>
+            <input type="text" ng-model="NewPostCtrl.newPost.title">
         </label>
         <label>
             ID статьи в адресной строке
-            <input type="text" ng-model="NewPostCtrl.newPost.visible_id" required>
+            <input type="text" ng-model="NewPostCtrl.newPost.visible_id">
         </label>
     </div>
     <div class="half pull-right">
         <label>
             Ссылка на изображение в архиве (миниатюра)
-            <input type="text" ng-model="NewPostCtrl.newPost.miniature" required>
+            <input type="text" ng-model="NewPostCtrl.newPost.miniature">
         </label>
         <label>
             Вводный текст
-            <textarea ng-model="NewPostCtrl.newPost.entry" required></textarea>
+            <textarea ng-model="NewPostCtrl.newPost.entry"></textarea>
         </label>
     </div>
 
@@ -35,7 +35,7 @@
     </div>
     <label>
         Содержимое статьи (HTML)
-        <textarea ng-model="NewPostCtrl.newPost.output" class="contenteditable" required></textarea>
+        <textarea ng-model="NewPostCtrl.newPost.output" class="contenteditable"></textarea>
     </label>
     </form>
 </section>
