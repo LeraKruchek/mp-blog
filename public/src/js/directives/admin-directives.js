@@ -28,6 +28,8 @@
                             break;
                         case 'a': tag += '<a href=""></a>';
                             break;
+                        case 'h2': tag += '<h2></h2>';
+                            break;
                     }
                      scope.output = value.slice(0, pos) + tag + value.slice(pos, value.length);
 //                    el.focus();

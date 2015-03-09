@@ -32,7 +32,7 @@
         self.savePost = function(){
             self.post.output = $sanitize(self.post.output);
             if (self.state){
-                self.post.state = 'hidden';
+                if(self.post.state === 'visible') self.post.state = 'hidden';
             }
             else{
                 if(self.post.state === 'draft'){

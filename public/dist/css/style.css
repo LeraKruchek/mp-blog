@@ -2,6 +2,9 @@
   margin: 0;
   padding: 0;
 }
+html {
+  overflow-y: scroll;
+}
 button {
   cursor: pointer;
 }
@@ -79,9 +82,17 @@ header {
   opacity: .5;
   display: block;
   margin-bottom: 30px;
+  color: #fff;
 }
 .wrapper p {
   word-wrap: break-word;
+}
+.wrapper .exit {
+  display: inline-block;
+}
+.min-wrapper {
+  width: 800px;
+  margin: 0 auto;
 }
 main {
   width: 960px;
@@ -92,6 +103,14 @@ main a {
 }
 main a:hover {
   border-bottom: 2px solid #ff6a71;
+}
+main h2 {
+  width: 800px;
+  font-family: 'pt sans caption';
+  font-size: 24px;
+  word-wrap: break-word;
+  margin: 0 auto 20px;
+  color: #2e3039;
 }
 main p {
   word-wrap: break-word;
@@ -111,7 +130,8 @@ main img + img,
 main img + figcaption {
   margin-top: 20px;
 }
-main img + p {
+main img + p,
+main img + h2 {
   margin-top: 60px;
 }
 main figcaption {
@@ -195,9 +215,6 @@ nav.pagination a .title {
   font-family: 'pt sans caption';
   font-size: 18px;
   color: #2e3039;
-}
-.wrapper.admin-wrapper .exit {
-  display: inline-block;
 }
 div.archive-posts {
   display: flex;
@@ -472,7 +489,7 @@ section.editor textarea.contenteditable {
   left: 0;
   z-index: 1040;
   display: none;
-  overflow: auto;
+  overflow-x: hidden;
   overflow-y: scroll;
 }
 .modal.fade .modal-dialog {

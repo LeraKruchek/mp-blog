@@ -2,7 +2,9 @@
   margin: 0;
   padding: 0;
 }
-
+html {
+  overflow-y: scroll;
+}
 @link-red: #ff6a71;
 button{
   cursor: pointer;
@@ -52,41 +54,56 @@ body{
   color: #82838e;
 }
 header {
-  //  color: rgba(255, 255, 255, 0.5);
   color: #fff;
   height: 800px;
   background-color: #303160;
   margin-bottom: 60px;
   position: relative;
 }
-   .wrapper{
-     .clearfix();
-    width: 960px;
-    .center_h;
-    & .logo{
-      margin-top: 50px;
-    }
-    & h1{
-      margin-top: 213px;
-      font-family: 'pt sans caption';
-      font-size: 48px;
-      word-wrap: break-word;
-    }
-    & time{
-      opacity: .5;
-      display: block;
-      margin-bottom: 30px;
-    }
-    & p{
-      word-wrap: break-word;
-   }
-   }
+.wrapper{
+  .clearfix();
+  width: 960px;
+  .center_h;
+  & .logo{
+    margin-top: 50px;
+  }
+  & h1{
+    margin-top: 213px;
+    font-family: 'pt sans caption';
+    font-size: 48px;
+    word-wrap: break-word;
 
+  }
+  & time{
+    opacity: .5;
+    display: block;
+    margin-bottom: 30px;
+    color: #fff;
+  }
+  & p{
+    word-wrap: break-word;
+ }
+ & .exit {
+   display: inline-block;
+ }
+}
+.min-wrapper{
+  width: 800px;
+  margin: 0 auto;
+}
 main{
   width: 960px;
   margin: 60px auto 0;
   & a{
     .simple-link;
+  }
+  & h2{
+    width: 800px;
+    font-family: 'pt sans caption';
+    font-size: 24px;
+    word-wrap: break-word;
+    margin: 0 auto 20px;
+    color: #2e3039;
   }
   & p{
     word-wrap: break-word;
@@ -105,7 +122,7 @@ main{
   & img + img, & img + figcaption{
       margin-top: 20px;
   }
-  & img + p{
+  & img + p,   & img + h2{
     margin-top: 60px;
   }
   & figcaption{
@@ -193,12 +210,6 @@ nav.pagination{
   }
 }
 
-
-.wrapper.admin-wrapper{
-  & .exit{
-    display: inline-block;
-  }
-}
 div.archive-posts {
   display: flex;
   flex-wrap: wrap;
@@ -494,7 +505,7 @@ section.editor{
   left: 0;
   z-index: 1040;
   display: none;
-  overflow: auto;
+  overflow-x: hidden;
   overflow-y: scroll;
 }
 

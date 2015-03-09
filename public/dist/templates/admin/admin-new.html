@@ -32,6 +32,7 @@
         <button class="add-tag"  ng-add-tag="img" output="NewPostCtrl.newPost.output">Img tag</button>
         <button class="add-tag"  ng-add-tag="figcaption" output="NewPostCtrl.newPost.output">Figcaption tag</button>
         <button class="add-tag"  ng-add-tag="a" output="NewPostCtrl.newPost.output">A tag</button>
+        <button class="add-tag"  ng-add-tag="h2" output="NewPostCtrl.newPost.output">H2 tag</button>
     </div>
     <label>
         Содержимое статьи (HTML)
@@ -63,7 +64,7 @@
 
 <div class="result_action">
     <label class="small-font">
-        <input type="checkbox" ng-model="NewPostCtrl.newPost.state">
+        <input type="checkbox" ng-checked="NewPostCtrl.newPost.state">
         Скрыть статью
     </label>
     <button class="btn-result btn-ok" ng-disabled="postForm.$invalid" message="Опубликовать на сайте?" title={{NewPostCtrl.newPost.title}} ng-really-click="NewPostCtrl.addPost()">Применить</button>

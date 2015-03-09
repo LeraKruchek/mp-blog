@@ -11,9 +11,11 @@
                 </li>
             </ul>
         </nav>
+        <div class="min-wrapper">
         <h1 ng-bind="PostCtrl.currentPost.title"></h1>
         <time class="small-font" ng-bind="PostCtrl.currentPost.date | rusDate" ng-show="PostCtrl.currentPost.date"></time>
         <p ng-bind="PostCtrl.currentPost.entry"></p>
+        </div>
     </div>
 </header>
 

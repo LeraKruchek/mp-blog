@@ -12,9 +12,11 @@
 
             </ul>
         </nav>
+    <div class="min-wrapper">
     <h1 ng-bind="FirstPostController.posts[0].title"></h1>
     <time class="small-font" ng-bind="FirstPostController.posts[0].date | rusDate" ng-show="FirstPostController.posts[0].date"></time>
     <p ng-bind="FirstPostController.posts[0].entry"></p>
+    </div>
     </div>
 </header>
 
