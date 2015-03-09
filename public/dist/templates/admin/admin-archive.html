@@ -25,7 +25,7 @@
     <div class="post-image hover-effects" ng-back-image="{{post.miniature}}" >
         <div class="controls" >
             <a class="edit"  ng-href="/admin/edit/{{post.visible_id}}" ></a>
-            <a class="delete" ng-href message="Подтвердите удаление" title={{post.title}} ng-really-click="AdminCtrl.deletePost(post._id, $index)" ></a>
+            <a class="delete" href message="Подтвердите удаление" title={{post.title}} ng-really-click="AdminCtrl.deletePost(post._id, $index)" ></a>
         </div>
     </div>
     <p class="title">{{post.title}}</p>

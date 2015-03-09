@@ -55,7 +55,7 @@
             </ul>
         </nav>
         <h1 ng-bind="NewPostCtrl.newPost.title"></h1>
-        <time class="small-font" ng-bing="NewPostCtrl.newPost.date | rusDate" ng-show="NewPostCtrl.newPost.date"></time>
+        <time class="small-font" ng-bing="NewPostCtrl.newPost.date | rusDate || new Date()" ng-show="NewPostCtrl.newPost.date"></time>
         <p ng-bind="NewPostCtrl.newPost.entry"></p>
     </div>
 </header>
@@ -64,7 +64,7 @@
 
 <div class="result_action">
     <label class="small-font">
-        <input type="checkbox" ng-checked="NewPostCtrl.newPost.state">
+        <input type="checkbox" ng-model="NewPostCtrl.newPost.state">
         Скрыть статью
     </label>
     <button class="btn-result btn-ok" ng-disabled="postForm.$invalid" message="Опубликовать на сайте?" title={{NewPostCtrl.newPost.title}} ng-really-click="NewPostCtrl.addPost()">Применить</button>

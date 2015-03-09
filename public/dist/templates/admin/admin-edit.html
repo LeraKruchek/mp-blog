@@ -62,7 +62,7 @@
 
 <div class="result_action">
     <label class="small-font">
-        <input type="checkbox" ng-checked="EditPostCtrl.state">
+        <input type="checkbox" ng-model="EditPostCtrl.state">
         Скрыть статью
     </label>
     <button class="btn-result btn-ok" ng-disabled="postForm.$invalid" message="Сохранить изменения?" title={{EditPostCtrl.post.title}} ng-really-click="EditPostCtrl.savePost()">Применить</button>

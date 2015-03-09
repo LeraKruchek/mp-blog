@@ -490,7 +490,7 @@ section.editor textarea.contenteditable {
   z-index: 1040;
   display: none;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: hidden;
 }
 .modal.fade .modal-dialog {
   -webkit-transform: translate(0, -250%);
