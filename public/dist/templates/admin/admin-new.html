@@ -2,42 +2,42 @@
 <section class="editor small-font" >
     <h1>Добавить новую статью</h1>
     <form name="postForm">
-    <div class="half pull-left">
-        <label>
-            Ссылка на главное изображение
-            <input type="text" ng-model="NewPostCtrl.newPost.background">
-        </label>
-        <label>
-            Название статьи
-            <input type="text" ng-model="NewPostCtrl.newPost.title">
-        </label>
-        <label>
-            ID статьи в адресной строке
-            <input type="text" ng-model="NewPostCtrl.newPost.visible_id">
-        </label>
-    </div>
-    <div class="half pull-right">
-        <label>
-            Ссылка на изображение в архиве (миниатюра)
-            <input type="text" ng-model="NewPostCtrl.newPost.miniature">
-        </label>
-        <label>
-            Вводный текст
-            <textarea ng-model="NewPostCtrl.newPost.entry"></textarea>
-        </label>
-    </div>
+        <div class="half pull-left">
+            <label>
+                Ссылка на главное изображение
+                <input type="text" ng-model="NewPostCtrl.newPost.background">
+            </label>
+            <label>
+                Название статьи
+                <input type="text" ng-model="NewPostCtrl.newPost.title">
+            </label>
+            <label>
+                ID статьи в адресной строке
+                <input type="text" ng-model="NewPostCtrl.newPost.visible_id">
+            </label>
+        </div>
+        <div class="half pull-right">
+            <label>
+                Ссылка на изображение в архиве (миниатюра)
+                <input type="text" ng-model="NewPostCtrl.newPost.miniature">
+            </label>
+            <label>
+                Вводный текст
+                <textarea ng-model="NewPostCtrl.newPost.entry"></textarea>
+            </label>
+        </div>
 
-    <div class="pull-right">
-        <button class="add-tag" ng-add-tag="p" output="NewPostCtrl.newPost.output">P tag</button>
-        <button class="add-tag"  ng-add-tag="img" output="NewPostCtrl.newPost.output">Img tag</button>
-        <button class="add-tag"  ng-add-tag="figcaption" output="NewPostCtrl.newPost.output">Figcaption tag</button>
-        <button class="add-tag"  ng-add-tag="a" output="NewPostCtrl.newPost.output">A tag</button>
-        <button class="add-tag"  ng-add-tag="h2" output="NewPostCtrl.newPost.output">H2 tag</button>
-    </div>
-    <label>
-        Содержимое статьи (HTML)
-        <textarea ng-model="NewPostCtrl.newPost.output" class="contenteditable"></textarea>
-    </label>
+        <div class="pull-right">
+            <button class="add-tag" ng-add-tag="p" output="NewPostCtrl.newPost.output">P tag</button>
+            <button class="add-tag"  ng-add-tag="img" output="NewPostCtrl.newPost.output">Img tag</button>
+            <button class="add-tag"  ng-add-tag="figcaption" output="NewPostCtrl.newPost.output">Figcaption tag</button>
+            <button class="add-tag"  ng-add-tag="a" output="NewPostCtrl.newPost.output">A tag</button>
+            <button class="add-tag"  ng-add-tag="h2" output="NewPostCtrl.newPost.output">H2 tag</button>
+        </div>
+        <label>
+            Содержимое статьи (HTML)
+            <textarea ng-model="NewPostCtrl.newPost.output" class="contenteditable"></textarea>
+        </label>
     </form>
 </section>
 <header ng-back-image-overlay={{NewPostCtrl.newPost.background}}>
@@ -54,9 +54,11 @@
 
             </ul>
         </nav>
-        <h1 ng-bind="NewPostCtrl.newPost.title"></h1>
-        <time class="small-font" ng-bing="NewPostCtrl.newPost.date | rusDate || new Date()" ng-show="NewPostCtrl.newPost.date"></time>
-        <p ng-bind="NewPostCtrl.newPost.entry"></p>
+        <div class="min-wrapper">
+            <h1 ng-bind="NewPostCtrl.newPost.title"></h1>
+            <time class="small-font" ng-bing="NewPostCtrl.newPost.date | rusDate || new Date()" ng-show="NewPostCtrl.newPost.date"></time>
+            <p ng-bind="NewPostCtrl.newPost.entry"></p>
+        </div>
     </div>
 </header>
 

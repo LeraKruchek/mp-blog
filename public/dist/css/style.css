@@ -276,6 +276,7 @@ div.archive-posts .add-new .post-image .circle {
   background-image: url(/public/dist/images/delete.png);
 }
 .item {
+  width: 300px;
   margin-bottom: 50px;
 }
 .item:nth-child(3n + 2) {
@@ -284,6 +285,8 @@ div.archive-posts .add-new .post-image .circle {
 .item .title {
   font-family: 'pt sans caption';
   font-size: 20px;
+  line-height: 20px;
+  margin: 12px 0 3px;
   color: #2e3039;
 }
 .item .post-image.hover-effects:before {

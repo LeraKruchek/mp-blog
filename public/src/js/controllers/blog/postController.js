@@ -5,8 +5,8 @@
     angular.module('blog-app.controllers')
         .controller('PostController', PostController);
 
-    PostController.$inject = ['$scope', 'PostFactory', '$stateParams', '$location'];
-    function PostController($scope, PostFactory, $stateParams, $location){
+    PostController.$inject = ['$scope', 'PostFactory', '$stateParams'];
+    function PostController($scope, PostFactory, $stateParams){
         var self = this;
         var id = $stateParams.id;
         self.posts = [];

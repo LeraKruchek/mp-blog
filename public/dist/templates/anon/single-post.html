@@ -1,6 +1,6 @@
 <header ng-back-image-overlay={{PostCtrl.currentPost.background}}>
     <div class="wrapper">
-        <go-home></go-home>
+        <go-home><img class="logo" src="/public/dist/images/logo.png"></go-home>
         <nav class="primary">
             <ul>
                 <li>
@@ -12,9 +12,9 @@
             </ul>
         </nav>
         <div class="min-wrapper">
-        <h1 ng-bind="PostCtrl.currentPost.title"></h1>
-        <time class="small-font" ng-bind="PostCtrl.currentPost.date | rusDate" ng-show="PostCtrl.currentPost.date"></time>
-        <p ng-bind="PostCtrl.currentPost.entry"></p>
+            <h1 ng-bind="PostCtrl.currentPost.title"></h1>
+            <time class="small-font" ng-bind="PostCtrl.currentPost.date | rusDate" ng-show="PostCtrl.currentPost.date"></time>
+            <p ng-bind="PostCtrl.currentPost.entry"></p>
         </div>
     </div>
 </header>

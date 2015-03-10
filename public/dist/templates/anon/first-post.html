@@ -1,22 +1,22 @@
 <header ng-back-image-overlay={{FirstPostController.posts[0].background}}>
     <div class="wrapper">
-    <go-home></go-home>
-        <nav class="primary">
-            <ul>
-                <li>
-                    <a ui-sref="anon.archive" class="link-to-choose">Архив</a>
-                </li>
-                <li>
-                    <a ui-sref="anon.info" class="link-to-choose">Инфо</a>
-                </li>
+        <go-home><img class="logo" src="/public/dist/images/logo.png"></go-home>
+            <nav class="primary">
+                <ul>
+                    <li>
+                        <a ui-sref="anon.archive" class="link-to-choose">Архив</a>
+                    </li>
+                    <li>
+                        <a ui-sref="anon.info" class="link-to-choose">Инфо</a>
+                    </li>
 
-            </ul>
-        </nav>
-    <div class="min-wrapper">
-    <h1 ng-bind="FirstPostController.posts[0].title"></h1>
-    <time class="small-font" ng-bind="FirstPostController.posts[0].date | rusDate" ng-show="FirstPostController.posts[0].date"></time>
-    <p ng-bind="FirstPostController.posts[0].entry"></p>
-    </div>
+                </ul>
+            </nav>
+        <div class="min-wrapper">
+            <h1 ng-bind="FirstPostController.posts[0].title"></h1>
+            <time class="small-font" ng-bind="FirstPostController.posts[0].date | rusDate" ng-show="FirstPostController.posts[0].date"></time>
+            <p ng-bind="FirstPostController.posts[0].entry"></p>
+        </div>
     </div>
 </header>
 

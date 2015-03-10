@@ -43,11 +43,22 @@
         };
     }
 
-    function goHome(){
+
+    goHome.$inject = ['$state'];
+    function goHome($state){
         return{
             restrict: 'E',
             replace: true,
-            template: '<a ui-sref="anon.firstPost"><img class="logo" src="/public/dist/images/logo.png"></a>'
+            transclude: true,
+            template: '<a ui-sref="anon.firstPost"><ng-transclude></ng-transclude></a>',
+            link: function(scope, element, attrs){
+                element.on('click', function(e) {
+                    if ($state.current.name === 'anon.firstPost') {
+                        e.preventDefault();
+                        $state.reload();
+                    }
+                });
+            }
         };
     }
 

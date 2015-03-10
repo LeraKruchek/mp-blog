@@ -1,41 +1,41 @@
 <section class="editor small-font" >
     <h1>Редактирование статьи</h1>
     <form name="postForm">
-    <div class="half pull-left">
+        <div class="half pull-left">
+            <label>
+                Ссылка на главное изображение
+                <input type="text" ng-model="EditPostCtrl.post.background">
+            </label>
+            <label>
+                Название статьи
+                <input type="text" ng-model="EditPostCtrl.post.title">
+            </label>
+            <label>
+                ID статьи в адресной строке
+                <input type="text" ng-model="EditPostCtrl.post.visible_id">
+            </label>
+        </div>
+        <div class="half pull-right">
+            <label>
+                Ссылка на изображение в архиве (миниатюра)
+                <input type="text" ng-model="EditPostCtrl.post.miniature">
+            </label>
+            <label>
+                Вводный текст
+                <textarea ng-model="EditPostCtrl.post.entry"></textarea>
+            </label>
+        </div>
+        <div class="pull-right">
+            <button class="add-tag" ng-add-tag="p" output="EditPostCtrl.post.output">P tag</button>
+            <button class="add-tag"  ng-add-tag="img" output="EditPostCtrl.post.output">Img tag</button>
+            <button class="add-tag"  ng-add-tag="figcaption" output="EditPostCtrl.post.output">Figcaption tag</button>
+            <button class="add-tag"  ng-add-tag="a" output="EditPostCtrl.post.output">A tag</button>
+            <button class="add-tag"  ng-add-tag="h2" output="EditPostCtrl.post.output">H2 tag</button>
+        </div>
         <label>
-            Ссылка на главное изображение
-            <input type="text" ng-model="EditPostCtrl.post.background">
+            Содержимое статьи (HTML)
+            <textarea ng-model="EditPostCtrl.post.output"  class="contenteditable"></textarea>
         </label>
-        <label>
-            Название статьи
-            <input type="text" ng-model="EditPostCtrl.post.title">
-        </label>
-        <label>
-            ID статьи в адресной строке
-            <input type="text" ng-model="EditPostCtrl.post.visible_id">
-        </label>
-    </div>
-    <div class="half pull-right">
-        <label>
-            Ссылка на изображение в архиве (миниатюра)
-            <input type="text" ng-model="EditPostCtrl.post.miniature">
-        </label>
-        <label>
-            Вводный текст
-            <textarea ng-model="EditPostCtrl.post.entry"></textarea>
-        </label>
-    </div>
-    <div class="pull-right">
-        <button class="add-tag" ng-add-tag="p" output="EditPostCtrl.post.output">P tag</button>
-        <button class="add-tag"  ng-add-tag="img" output="EditPostCtrl.post.output">Img tag</button>
-        <button class="add-tag"  ng-add-tag="figcaption" output="EditPostCtrl.post.output">Figcaption tag</button>
-        <button class="add-tag"  ng-add-tag="a" output="EditPostCtrl.post.output">A tag</button>
-        <button class="add-tag"  ng-add-tag="h2" output="EditPostCtrl.post.output">H2 tag</button>
-    </div>
-    <label>
-        Содержимое статьи (HTML)
-        <textarea ng-model="EditPostCtrl.post.output"  class="contenteditable"></textarea>
-    </label>
     </form>
 </section>
 <header ng-back-image-overlay={{EditPostCtrl.post.background}}>
@@ -52,9 +52,11 @@
 
             </ul>
         </nav>
-        <h1 ng-bind="EditPostCtrl.post.title"></h1>
-        <time class="small-font" ng-bind="EditPostCtrl.post.date | rusDate" ng-show="EditPostCtrl.post.date"></time>
-        <p ng-bind="EditPostCtrl.post.entry"></p>
+        <div class="min-wrapper">
+            <h1 ng-bind="EditPostCtrl.post.title"></h1>
+            <time class="small-font" ng-bind="EditPostCtrl.post.date | rusDate" ng-show="EditPostCtrl.post.date"></time>
+            <p ng-bind="EditPostCtrl.post.entry"></p>
+        </div>
     </div>
 </header>
 
